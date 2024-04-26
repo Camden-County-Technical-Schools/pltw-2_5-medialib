@@ -56,4 +56,9 @@ public class Book
     if (r >= 0 && r <= 10) this.rating += r;
    
   }
+
+  public boolean equals(Book b) {
+
+    return this.title.equals(b.title) && this.author.equals(b.author);
+  }
 }

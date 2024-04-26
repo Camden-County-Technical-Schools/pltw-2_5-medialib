@@ -33,16 +33,24 @@ public class MediaLibRunner
 
     System.out.println("Book: " + myBook); 
     myBook.adjustRating(1);
-
     System.out.println("Library: \n" + myLib);
 
-    
+    /* 
     System.out.println("You have a NEW Library");
     System.out.println(myLib2);
-
+  
     newBook = new Book("1984", "Orwell");
-    System.out.println(myLib2);
+    System.out.println(myLib2); // will still say "To Kill a Mockingbird"
+    */
+
+    // System.out.println("Before Test: " + newBook); // 1984
+    // myLib.testBook(newBook);
+    // System.out.println("Post Test: " + newBook); // Hidden Pictures
     
+    Book a = newBook;
+    System.out.println(newBook.equals(a));
+
+    // System.out.println(a.title); // shows an error because title is a private field
    
   }
 }

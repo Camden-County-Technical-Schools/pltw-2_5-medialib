@@ -23,7 +23,10 @@ public class MediaLib
     return info;
   }
 
+  /* 
   public void testBook(Book tester) {
-    
+    tester.setTitle("Hidden Pictures");
+    System.out.println("Book Title changed.");
   }
+  */
 }
