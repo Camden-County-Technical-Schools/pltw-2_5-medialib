@@ -24,7 +24,7 @@ public class Album {
         artist = a;
     }
 
-    // accessors methods
+    // mutator methods
 
     /**
      * reset the name field of the album
@@ -119,7 +119,7 @@ public class Album {
     }
 
 
-    // mutator methods
+    // accessor methods
     /**
      * retrieve the name set in constructor, or changed by set method
      * @return name of album
