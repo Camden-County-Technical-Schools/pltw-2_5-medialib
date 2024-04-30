@@ -67,9 +67,9 @@ throw new IllegalArgumentException(
 
 @Override
 public String toString() {
-  string info = this.name;
+  String info = this.name;
   if (this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0) {
-    info = info + " - Release: " + this.getReleaseYear + "-"+
+    info = info + " - Release: " + this.releaseYear + "-"+
     this.releaseMonth + "-" + this.releaseDay;
 
   }
