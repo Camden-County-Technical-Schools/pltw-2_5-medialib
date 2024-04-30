@@ -40,10 +40,16 @@ public class Album {
 
     public void setReleaseYear(int releaseYear) {
         if (releaseYear < 1800 || releaseYear > 9999) {
-            String msg = String.format("Release year must be between 1800 and 9999, received %d", releaseYear);
-            throw new IllegalArgumentException(msg);
+            // String msg = String.format(
+            //     "Release year must be between 1800 and 9999, received %d",
+            //     releaseYear);
+            // throw new IllegalArgumentException(msg);
+            throw new IllegalArgumentException(
+                "Release year must be between 1800 and 9999, received "
+                + releaseYear);
+        } else {
+            this.releaseYear = releaseYear;
         }
-        this.releaseYear = releaseYear;
     }
 
     public int getReleaseMonth() {
@@ -51,7 +57,13 @@ public class Album {
     }
 
     public void setReleaseMonth(int releaseMonth) {
-        this.releaseMonth = releaseMonth;
+        if (releaseMonth < 1 || releaseMonth > 12) {
+            throw new IllegalArgumentException(
+                "Release month must be between 1 and 12, received "
+                + releaseMonth);
+        } else {
+            this.releaseMonth = releaseMonth;
+        }
     }
 
     public int getReleaseDay() {
@@ -59,6 +71,26 @@ public class Album {
     }
 
     public void setReleaseDay(int releaseDay) {
+        if (releaseDay < 1 || releaseDay > 31) {
+            throw new IllegalArgumentException(
+                "Release day must be between 1 and 31, received "
+                + releaseDay);
+        } else {
+            this.releaseDay = releaseDay;
+        }
+
         this.releaseDay = releaseDay;
     }
+
+    @Override
+    public String toString() {
+        String info = this.name;
+        if (this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0) {
+            info = info + " - Release: " + this.releaseYear + "-"+
+                this.releaseMonth + "-" + this.releaseDay;
+        }
+        return info;
+    }
+
+
 }
