@@ -50,4 +50,15 @@ public class Book
   public void setAuthor(String a) {
     author = a;
   }
+
+  public void adjustRating(int r) {
+
+    if (r >= 0 && r <= 10) this.rating += r;
+   
+  }
+
+  public boolean equals(Book b) {
+
+    return this.title.equals(b.title) && this.author.equals(b.author);
+  }
 }

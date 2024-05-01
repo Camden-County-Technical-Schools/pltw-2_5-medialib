@@ -18,6 +18,15 @@ public class MediaLib
   {
     String info = "";
     
+    if (book != null) info = book.toString();
+    
     return info;
   }
+
+  /* 
+  public void testBook(Book tester) {
+    tester.setTitle("Hidden Pictures");
+    System.out.println("Book Title changed.");
+  }
+  */
 }
