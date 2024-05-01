@@ -77,7 +77,7 @@ private int releaseDay;
     }
     @Override
     public String toString(){
-        return this.name + " - Release: " + this.getreleaseYear + "-" +
+        return this.name + " - Release: " + this.releaseYear + "-" +
         this.releaseMonth + "-"  + this.releaseDay;
     }
 
