@@ -72,7 +72,7 @@ public class Album {
 
     @Override 
     public String toString() {
-        return this.name + " Release:" + this.getReleaseYear + "-" + this.releaseMonth + "-" +
+        return this.name + " Release:" + this.releaseYear + "-" + this.releaseMonth + "-" +
         this.releaseDay; 
     }
 
