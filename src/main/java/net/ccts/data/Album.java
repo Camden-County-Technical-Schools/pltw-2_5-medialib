@@ -46,8 +46,7 @@ public class Album {
     public void setReleaseYear(int releaseYear) {
         if(releaseYear < 1800 || releaseYear > 9999){
             throw new IllegalArgumentException(
-                "Release year must be between 1800 and 9999, received %d", 
-                + releaseYear); 
+                "Release year must be between 1800 and 9999, received" + releaseYear); 
         } else {
             this.releaseYear = releaseYear; 
         }
@@ -56,8 +55,7 @@ public class Album {
     public void setReleaseMonth(int releaseMonth) {
         if(releaseMonth < 1 || releaseMonth > 12){
             throw new IllegalArgumentException(
-                "Release year must be between 1 and 12, received %d", 
-                + releaseMonth); 
+                "Release year must be between 1 and 12, received" + releaseMonth); 
         } else {
             this.releaseMonth = releaseMonth;
         }     
@@ -66,8 +64,7 @@ public class Album {
     public void setReleaseDay(int releaseDay) {
         if(releaseDay < 1 || releaseDay > 31){
             throw new IllegalArgumentException(
-                "Release year must be between 1 and 31, received %d", 
-                + releaseDay); 
+                "Release year must be between 1 and 31, received "  + releaseDay); 
         } else {
             this.releaseDay = releaseDay; 
         } 
