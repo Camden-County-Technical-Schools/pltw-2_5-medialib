@@ -20,8 +20,8 @@ public class Album {
      */
     public Album(String n, String a) {
         
-        name = n;
-        artist = a;
+        this.name = n;
+        this.artist = a;
     }
 
     // accessors methods
@@ -110,6 +110,7 @@ public class Album {
                     break;
                 
                 default:
+                    d = 0;
                     throw new IllegalArgumentException("Release Day is invalid for selected release Date, you have month " + this.releaseMonth + "with day: " + d);
 
             }
@@ -168,7 +169,7 @@ public class Album {
      */
     @Override
     public String toString() {
-        String a = "Title: " + name + " | Artist: " + artist + " | Release Date(YYYY/MM/DD): " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
+        String a = name + "- Release: " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
         return a;
     }
     
