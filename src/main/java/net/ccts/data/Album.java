@@ -42,7 +42,6 @@ public class Album {
         } else {
             this.releaseYear = releaseYear;
         }
-        this.releaseYear = releaseYear;
     }
 
     public void setreleaseMonth(int releaseMonth){
