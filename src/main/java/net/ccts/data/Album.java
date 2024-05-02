@@ -1,10 +1,6 @@
 package net.ccts.data;
 
-/*Implement the class conforming to this spec to earn up to 8 points.
-Structure of the Album class and comment: 1 point
-Member variables: 2 points
-Constructor: 2 points
-Methods: 3 points*/
+/*The album class is supposed to be used to find the name of a song, the artist and the release date*/
 public class Album {
 
   private String name;
