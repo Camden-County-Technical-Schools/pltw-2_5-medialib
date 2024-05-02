@@ -17,46 +17,41 @@ private int releaseDay;
         this.artist = a;
     }
 
-    public String getName(){
-        return this.name;
-
-
-    }
-     
-        public String getArtist(){
-        return this.artist;
-
-
-    }
-        public int getreleaseYear(){
-        return releaseYear;
-
-
-    }
-        public int getreleaseMonth(){
-        return releaseMonth;
-
-
-    }
-        public int getreleaseDay(){
-        return releaseDay;
-
-
-    }
-    public void setName(String n){
-        this.name = n;
-
-    }
-    public void setArtist(String a){
-        this.artist = a;
-
-    }
-    public void setreleaseYear(int releaseYear){
-        if (releaseYear < 1800 || releaseYear > 9999){
-            throw new IllegalArgumentException(
-                "Release year must be between 1800 and 9999, receive"
-                 + releaseYear);
+        public String getName(){
+            return this.name;
         }
+        public String getArtist(){
+                return this.artist;
+
+
+        }
+        public int getreleaseYear(){
+            return releaseYear;
+        }
+        public int getreleaseMonth(){
+                return releaseMonth;
+
+
+        }
+        public int getreleaseDay(){
+            return releaseDay;
+
+
+        }
+        public void setName(String n){
+            this.name = n;
+
+        }
+        public void setArtist(String a){
+            this.artist = a;
+
+        }
+        public void setreleaseYear(int releaseYear){
+            if (releaseYear < 1800 || releaseYear > 9999){
+                throw new IllegalArgumentException(
+                    "Release year must be between 1800 and 9999, receive"
+                   + releaseYear);
+            }
         this.releaseYear = releaseYear;
 
     }
