@@ -5,17 +5,17 @@ Structure of the Album class and comment: 1 point
 Member variables: 2 points
 Constructor: 2 points
 Methods: 3 points*/
-public class Album{
+public class Album {
 
-  private String name ;
-  private String artist ; 
-  private int releaseYear ;
+  private String name;
+  private String artist; 
+  private int releaseYear;
   private int releaseMonth;
   private int releaseDay; 
 
   public Album(String n, String a){
-this.name = n;
-this.artist = a;
+    this.name = n;
+    this.artist = a;
   }
 public String getName(){
   return this.name;
@@ -72,6 +72,6 @@ public String toString(){
   if(this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0){
     info = info + " - Release:" + this.releaseYear + "-"+ this.releaseMonth + "-" + this.releaseDay;
   }
-      return this.name + " - Release" + this.releaseYear + "-" + this.releaseMonth "-" + this.releaseDay;
+      return this.name + " - Release" + this.releaseYear + "-" + this.releaseMonth + "-" + this.releaseDay;
 }
 }  
