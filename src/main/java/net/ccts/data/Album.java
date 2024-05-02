@@ -1,5 +1,8 @@
 package net.ccts.data;
-
+/**
+ * Public Class Album is used to get the artist, name, releaseyear/month/day
+ * There are limits on the releaseyear/month/day
+ */
 public class Album{
     
     
@@ -77,7 +80,7 @@ private int releaseDay;
     }
     @Override
     public String toString(){
-        return this.name + " - Release: " + this.getreleaseYear + "-" +
+        return this.name + " - Release: " + this.releaseYear + "-" +
         this.releaseMonth + "-"  + this.releaseDay;
     }
 
