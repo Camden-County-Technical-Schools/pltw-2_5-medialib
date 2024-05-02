@@ -21,7 +21,7 @@ private int releaseDay;
             return this.name;
         }
         public String getArtist(){
-                return this.artist;
+            return this.artist;
 
 
         }
@@ -29,7 +29,7 @@ private int releaseDay;
             return releaseYear;
         }
         public int getreleaseMonth(){
-                return releaseMonth;
+            return releaseMonth;
 
 
         }
