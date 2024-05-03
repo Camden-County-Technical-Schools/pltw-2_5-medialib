@@ -25,7 +25,7 @@ public int getYear(){
     }
 
 public void setReleaseYear(int y){
-    if (releaseYear < 1800 || releaseYear>9999){
+    if (y < 1800 || y>9999){
         throw new IllegalArgumentException(
         "Release year must be between 1800 and 9999, received" + y);
         } else {
@@ -37,7 +37,7 @@ public int getMonth(){
     return this.releaseMonth;
         } 
 public void setReleaseMonth(int m){
-    if (releaseMonth < 1 || releaseMonth>12){
+    if (m < 1 || m>12){
         throw new IllegalArgumentException(
         "Release month must be between 1 and 12, received" + m);
         } else {
@@ -49,7 +49,7 @@ public int getDay(){
     return this.releaseDay;
         } 
 public void setReleaseDay(int d){
-    if (releaseMonth < 1 || releaseMonth>31){
+    if (d < 1 || d>31){
         throw new IllegalArgumentException(
         "Release day must be between 1 and 31, received" + d);
         } else {
