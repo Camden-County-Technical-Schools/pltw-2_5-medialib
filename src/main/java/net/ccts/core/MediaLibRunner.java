@@ -15,40 +15,40 @@ public class MediaLibRunner
     
     MediaLib myLib = new MediaLib();
     MediaLib myLib2 = new MediaLib();
-    Book newBook = new Book("To Kill a Mockingbird", "Lee");
-    Book myBook = new Book("The Lord of the Rings", "Tolkien");
+    Book newbooks = new Book("To Kill a Mockingbird", "Lee");
+    Book mybooks = new Book("The Lord of the Rings", "Tolkien");
 
     int myRating = 2;
 
     System.out.println("Welcome to your Media Library");
-    System.out.println("Book created " + myBook);
+    System.out.println("books created " + mybooks);
   
-    myLib.addBook(myBook);
-    myBook.adjustRating(myRating);
+    // myLib.addbooks(mybooks);
+    mybooks.adjustRating(myRating);
    
     System.out.println("MyRating: " + myRating);
     
-    myBook.setTitle("Harry Potter");
-    myLib2.addBook(newBook);
+    mybooks.setTitle("Harry Potter");
+    // myLib2.addbooks(newbooks);
 
-    System.out.println("Book: " + myBook); 
-    myBook.adjustRating(1);
+    System.out.println("books: " + mybooks); 
+    mybooks.adjustRating(1);
     System.out.println("Library: \n" + myLib);
 
     /* 
     System.out.println("You have a NEW Library");
     System.out.println(myLib2);
   
-    newBook = new Book("1984", "Orwell");
+    newbooks = new books("1984", "Orwell");
     System.out.println(myLib2); // will still say "To Kill a Mockingbird"
     */
 
-    // System.out.println("Before Test: " + newBook); // 1984
-    // myLib.testBook(newBook);
-    // System.out.println("Post Test: " + newBook); // Hidden Pictures
+    // System.out.println("Before Test: " + newbooks); // 1984
+    // myLib.testbooks(newbooks);
+    // System.out.println("Post Test: " + newbooks); // Hidden Pictures
     
-    Book a = newBook;
-    System.out.println(newBook.equals(a));
+    Book a = newbooks;
+    System.out.println(newbooks.equals(a));
 
     // System.out.println(a.title); // shows an error because title is a private field
    

@@ -8,7 +8,7 @@ import static org.junit.Assert.assertNull;
 public class MediaLibTest {
 
     @Test
-    public void testSetBook() {
+    public void testsetBook() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         Book b2 = new Book("title2", "author2");
@@ -18,21 +18,21 @@ public class MediaLibTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testSetBookException1() {
+    public void testsetBookException1() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         lib.setBook(-1, b1);
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testSetBookException99() {
+    public void testsetBookException99() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         lib.setBook(99, b1);
     }
 
     @Test
-    public void testSetAlbum() {
+    public void testsetAlbum() {
         MediaLib lib = new MediaLib();
         Album a1 = new Album("name1", "artist1");
         Album a2 = new Album("name2", "artist2");
@@ -42,21 +42,21 @@ public class MediaLibTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testSetAlbumException1() {
+    public void testsetAlbumException1() {
         MediaLib lib = new MediaLib();
         Album a1 = new Album("name1", "artist1");
         lib.setAlbum(-1, a1);
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testSetAlbumException99() {
+    public void testsetAlbumException99() {
         MediaLib lib = new MediaLib();
         Album a1 = new Album("name1", "artist1");
         lib.setAlbum(99, a1);
     }
 
     @Test
-    public void testRemoveBook() {
+    public void testremoveBook() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         Book b2 = new Book("title2", "author2");
