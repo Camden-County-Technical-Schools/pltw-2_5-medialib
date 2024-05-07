@@ -17,7 +17,7 @@ public class MediaLib
    * @param index - locations of desired change
    */
   public Book fetchBook(int index) {
-    if (index <= 0 || index >= this.books.length) throw new IllegalArgumentException("Index out of bounds.");
+    if (index < 0 || index >= this.books.length) throw new IllegalArgumentException("Index out of bounds.");
     return this.books[index];
   }
 
@@ -27,7 +27,7 @@ public class MediaLib
    * @param index - location of desired change
    */
   public Album fetchAlbum(int index) {
-    if (index <= 0 || index >= this.albums.length) throw new IllegalArgumentException("Index out of bounds.");
+    if (index < 0 || index >= this.albums.length) throw new IllegalArgumentException("Index out of bounds.");
     return this.albums[index];
   }
 
@@ -39,7 +39,7 @@ public class MediaLib
    * @param b - a book object containing a title and author
    */
   public void setBook(int index, Book b) {
-    if (index >= 0 && index <= this.books.length) this.books[index] = b;
+    if (index >= 0 && index < this.books.length) this.books[index] = b;
     else throw new IllegalArgumentException("Index out of bounds.");
   }
 
@@ -49,13 +49,13 @@ public class MediaLib
    * @param a - an album object containing a name and artist
    */
   public void setAlbum(int index, Album a) {
-    if (index >= 0 && index <= this.albums.length) this.albums[index] = a;
+    if (index >= 0 && index < this.albums.length) this.albums[index] = a;
     else throw new IllegalArgumentException("Index out of bounds.");
   }
 
   public Book removeBook(int index) {
     Book temp;
-    if (index >= 0 && index <= this.books.length) {
+    if (index >= 0 && index < this.books.length) {
       temp = this.books[index]; 
       this.books[index] = null;
     }
