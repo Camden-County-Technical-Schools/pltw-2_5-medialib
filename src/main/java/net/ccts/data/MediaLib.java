@@ -52,7 +52,12 @@ public class MediaLib
     if (index >= 0 && index < this.albums.length) this.albums[index] = a;
     else throw new IllegalArgumentException("Index out of bounds.");
   }
-
+  
+  /**
+   * change the book at the index to ull and return old book value
+   * @param index - location of desired change
+   * @return temp - the name of the book before being set to null
+   */
   public Book removeBook(int index) {
     Book temp;
     if (index >= 0 && index < this.books.length) {
@@ -64,6 +69,11 @@ public class MediaLib
 
   }
 
+  /**
+   * change the album at the index to ull and return old album value
+   * @param index - location of desired change
+   * @return temp - the name of the album before being set to null
+   */
   public Album removeAlbum(int index) {
     Album temp;
     if (index >= 0 && index <= this.albums.length) {
