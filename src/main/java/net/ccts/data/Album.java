@@ -13,10 +13,13 @@ public class Album{
   private int releaseDay;
 
 // Constructors
-public Album(String n, String a) {
-    this.name = n;
-    this.artist = a;
-}
+public Album(String n, String a, int y, int m, int d) {
+  this.name = n;
+  this.artist = a;
+  this.releaseYear = y;
+  this.releaseMonth = m;
+  this.releaseDay = d;
+    }
 
 // Get name
 public String getName() {
@@ -81,9 +84,27 @@ public String toString() {
     info = info + " - Release: " + this.releaseYear + "-"+
     this.releaseMonth + "-" + this.releaseDay;
 
-  }
+}
 return info;
 }
+private boolean validateReleaseDate(int releaseYear, int releaseMonth, int releaseDay) {
+  if (releaseYear == 0 || releaseMonth == 0 || releaseDay == 0) 
+    return true;      
+  if (releaseYear < 1800 || releaseYear > 9999) {
+    return false;
+}     
+  if (releaseMonth < 1 || releaseMonth > 12) {
+    return false;
 }
+
+  if (releaseDay < 1 || releaseDay > 31) {
+    return false;
+}
+
+  return true; 
+}
+}
+
+
 
     
