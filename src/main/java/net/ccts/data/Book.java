@@ -3,10 +3,9 @@ package net.ccts.data;
 /*
  * Activity 2.5.7
  *
- * A Book class for the MediaLibrary program
+ * A books class for the MediaLibrary program
  */
-public class Book
-{
+public class Book {
   private String title;
   private String author;
   private int rating;
@@ -32,6 +31,7 @@ public class Book
     return rating;
   }
   
+  @Override
   public String toString() 
   {
     String info = "\"" + title + "\", written by " + author;
