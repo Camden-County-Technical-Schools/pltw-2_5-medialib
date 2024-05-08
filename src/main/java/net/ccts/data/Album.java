@@ -61,14 +61,20 @@ public class Album
   }
 
   public void setreleaseDay(int d) {
+    if (d < 1 || d > 31)
+      throw new IllegalArgumentException("release day must be between 1 and 31, received " + d)
     releaseDay = d;
   }
 
   public void setreleaseMonth(int m) {
+    if (m < 1 || m > 12)
+      throw new IllegalArgumentException("release month must be between 1 and 12, received " + m)
     releaseMonth = m;
   }
 
   public void setreleaseYear(int y) {
+    if (y < 1800 || y > 9999)
+      throw new IllegalArgumentException("release day must be between 1800 and 9999, received " + y)
     releaseYear = y;
   }
 
