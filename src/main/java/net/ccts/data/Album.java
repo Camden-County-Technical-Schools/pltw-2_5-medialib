@@ -14,8 +14,8 @@ public class Album{
 
 public Album(String t, String a)
   {
-    name = t;
-    artist = a;
+    this.name = t;
+    this.artist = a;
   }
 
 public String getName() {
@@ -26,15 +26,15 @@ public String getName() {
     return artist;
   }
 
-  public int getYear() {
+  public int getReleaseYear() {
     return releaseYear;
   }
 
-  public int getMonth() {
+  public int getReleaseMonth() {
     return releaseMonth;
   }
 
-  public int getDay() {
+  public int getReleaseDay() {
     return releaseDay;
   }
 
