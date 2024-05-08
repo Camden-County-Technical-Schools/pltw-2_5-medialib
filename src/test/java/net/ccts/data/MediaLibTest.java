@@ -1,14 +1,13 @@
 package net.ccts.data;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import org.junit.Test;
 
 public class MediaLibTest {
 
     @Test
-    public void testsetBook() {
+    public void testSetBook() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         Book b2 = new Book("title2", "author2");
@@ -18,21 +17,21 @@ public class MediaLibTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testsetBookException1() {
+    public void testSetBookException1() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         lib.setBook(-1, b1);
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testsetBookException99() {
+    public void testSetBookException99() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         lib.setBook(99, b1);
     }
 
     @Test
-    public void testsetAlbum() {
+    public void testSetAlbum() {
         MediaLib lib = new MediaLib();
         Album a1 = new Album("name1", "artist1");
         Album a2 = new Album("name2", "artist2");
@@ -42,21 +41,21 @@ public class MediaLibTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testsetAlbumException1() {
+    public void testSetAlbumException1() {
         MediaLib lib = new MediaLib();
         Album a1 = new Album("name1", "artist1");
         lib.setAlbum(-1, a1);
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testsetAlbumException99() {
+    public void testSetAlbumException99() {
         MediaLib lib = new MediaLib();
         Album a1 = new Album("name1", "artist1");
         lib.setAlbum(99, a1);
     }
 
     @Test
-    public void testremoveBook() {
+    public void testRemoveBook() {
         MediaLib lib = new MediaLib();
         Book b1 = new Book("title1", "author1");
         Book b2 = new Book("title2", "author2");

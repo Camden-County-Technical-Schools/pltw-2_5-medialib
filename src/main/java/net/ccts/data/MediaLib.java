@@ -76,7 +76,7 @@ public class MediaLib
    */
   public Album removeAlbum(int index) {
     Album temp;
-    if (index >= 0 && index <= this.albums.length) {
+    if (index >= 0 && index < this.albums.length) {
       temp = this.albums[index]; 
       this.albums[index] = null;
     } 
