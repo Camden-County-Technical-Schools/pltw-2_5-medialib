@@ -1,5 +1,5 @@
 package net.ccts.data;
-
+// calls for the class album
 public class Album{
 
     private String name;
@@ -31,7 +31,7 @@ public class Album{
     public void setArtist(String a) {
         artist = a;
     }
-    public void setReleaseYear(int r) {
+    public void setReleaseYear(int releaseYear) {
         if (releaseYear < 1800 || releaseYear > 9999) {
             throw new IllegalArgumentException(
                 "Release year must be set between 1800 and 9999, received "
