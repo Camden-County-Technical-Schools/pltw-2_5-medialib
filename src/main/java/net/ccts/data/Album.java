@@ -26,6 +26,18 @@ public String getName() {
     return artist;
   }
 
+  public int getYear() {
+    return releaseYear;
+  }
+
+  public int getMonth() {
+    return releaseMonth;
+  }
+
+  public int getDay() {
+    return releaseDay;
+  }
+
 public void setReleaseYear(int t) {
   if (t > 1799 && t < 10000)
     releaseYear = t;
@@ -44,10 +56,17 @@ public void setReleaseYear(int t) {
   throw new IllegalArgumentException("Release day must be between 1 and 31, received" + t);
   }
 
+  public void setName(String t) {
+    name = t;
+  }
+  public void setArtist(String a) {
+    artist = a;
+  }
 @Override
 public String toString() {
   String info = name + "Release: " + releaseYear + " - " + releaseMonth + " - " + releaseDay;
   return info;
 }
+
 
 }
