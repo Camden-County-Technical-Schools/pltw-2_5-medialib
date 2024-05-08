@@ -11,13 +11,24 @@ public class MediaLib
 
   public void addBook(Book b)
   {
-    book = b;
+    private;
   }
+  public Book fetchBook(int index){
+    if(index < 0 || index >= book.length)
+    throw new illegalArugmentException("Index is out of bounds ");
 
+  }
+  public Album fetchAlbum(){
+
+  }  
   public String toString() 
   {
     String info = "";
     
     return info;
   }
+
+
+
+
 }
