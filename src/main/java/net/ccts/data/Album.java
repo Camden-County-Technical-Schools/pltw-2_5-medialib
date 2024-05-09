@@ -73,6 +73,8 @@ private int releaseDay;
         this.releaseDay = releaseDay;
 
     }
+    private boolean validReleaseDate()
+
     @Override
     public String toString(){
         return this.name + " - Release: " + this.releaseYear + "-" +
