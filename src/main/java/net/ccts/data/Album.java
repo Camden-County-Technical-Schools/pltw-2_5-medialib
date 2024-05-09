@@ -14,11 +14,11 @@ public class Album {
         this.artist = a;
     }
 
-    public String artist() {
+    public String getArtist() {
         return this.artist;
     }
 
-    public int releaseYear() {
+    public int getReleaseYear() {
         return this.releaseYear;
     }
 
@@ -26,11 +26,11 @@ public class Album {
         return this.name;
     }
 
-    public int releaseDay() {
+    public int getReleaseDay() {
         return this.releaseDay;
     }
 
-    public int releaseMonth() {
+    public int getReleaseMonth() {
         return this.releaseMonth;
     }
 
