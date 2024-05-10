@@ -10,7 +10,10 @@ public class MediaLib {
   private Book[] books = new Book[10];
   private Album[] albums = new Album[50];
 
-  
+  /** 
+   * @param is the index that is used
+   * @return returns the position of index in books
+  */
   public Book fetchBook(int index){
     if(index < 0 || index >= books.length){
     throw new IllegalArgumentException("Index is out of bounds ");
@@ -24,6 +27,10 @@ public class MediaLib {
     }
   return albums[index];
   }  
+   /** 
+   * @param is the index that is used
+   * @return returns the position of index in albums
+  */
   
   public void setBook(int index, Book b){
     if(index < 0 || index >= books.length){
@@ -31,14 +38,20 @@ public class MediaLib {
     }
     this.books[index] = b;
   }
-
+   /** 
+   * @param is the index that is used
+   * @return returns the position of index in books
+  */ 
   public void setAlbum (int index, Album a){
     if(index < 0 || index >= albums.length){
         throw new IllegalArgumentException("Index is out of bounds ");
     }
     this.albums[index] = a; 
-
   }
+   /** 
+   * @param is the index that is used
+   * @return returns the position of index in albums
+  */
   public Book removeBook(int index){
   if(index < 0 || index >= books.length){
         throw new IllegalArgumentException("Index is out of bounds ");
@@ -47,6 +60,11 @@ public class MediaLib {
     this.books[index] = null;
     return tmp; 
   }
+   /** 
+   * @param is the index that is used
+   * @return returns the position of index in books
+   * @tmp is used to temporaily hold the element in books at index
+  */
   public Album removeAlbum(int index){
     if(index < 0 || index >= albums.length){
         throw new IllegalArgumentException("Index is out of bounds ");
@@ -55,7 +73,11 @@ public class MediaLib {
       this.albums[index] = null;
       return tmp;
   }
-
+ /** 
+   * @param is the index that is used
+   * @return returns the position of index in albums
+   * @tmp is used to temporaily hold the element in albums at index
+  */
   public String toString() 
   {
     String info = "";
