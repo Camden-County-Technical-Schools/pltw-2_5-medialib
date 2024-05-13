@@ -15,6 +15,7 @@ public class MediaLibTest {
         lib.setBook(0, b1);
         lib.setBook(1, b2);
         assertEquals(b1.getTitle(), lib.fetchBook(0).getTitle());
+        assertEquals(b2.getAuthor(), lib.fetchBook(1).getAuthor());
     }
 
     @Test (expected = IllegalArgumentException.class)
@@ -38,6 +39,7 @@ public class MediaLibTest {
         Album a2 = new Album("name2", "artist2");
         lib.setAlbum(0, a1);
         lib.setAlbum(1, a2);
+        assertEquals(a1.getName(), lib.fetchAlbum(0).getName());
         assertEquals(a2.getArtist(), lib.fetchAlbum(1).getArtist());
     }
 
