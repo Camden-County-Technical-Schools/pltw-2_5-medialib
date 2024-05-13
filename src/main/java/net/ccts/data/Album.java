@@ -1,4 +1,6 @@
 package net.ccts.data;
+import java.time.YearMonth;
+import java.time.LocalDate;
 /**
  * Represents an album in a music collection.
  * Users can create instances of the Album class by providing the name of the album and the name of the artist.
@@ -13,12 +15,10 @@ public class Album{
   private int releaseDay;
 
 // Constructors
-public Album(String n, String a, int y, int m, int d) {
+public Album(String n, String a) {
   this.name = n;
   this.artist = a;
-  this.releaseYear = y;
-  this.releaseMonth = m;
-  this.releaseDay = d;
+
     }
 
 // Get name
@@ -29,6 +29,13 @@ public String getName() {
 public String getArtist() {
   return artist;
 }
+public void setName(String n) {
+  this.name = n;
+}
+public void setArtist(String a) {
+  this.artist = a;
+}
+
 // Get Release Year
 public int getreleaseYear() {
   return releaseYear;
@@ -87,21 +94,19 @@ public String toString() {
 }
 return info;
 }
-private boolean validateReleaseDate(int releaseYear, int releaseMonth, int releaseDay) {
-  if (releaseYear == 0 || releaseMonth == 0 || releaseDay == 0) 
-    return true;      
-  if (releaseYear < 1800 || releaseYear > 9999) {
-    return false;
-}     
-  if (releaseMonth < 1 || releaseMonth > 12) {
-    return false;
-}
+private void validateReleaseDate() {
+  if (releaseYear != 0 && releaseMonth != 0 && releaseDay != 0) {
+    YearMonth yearMonth = YearMonth.of(releaseYear, releaseMonth);
+    int lastDayOfMonth = yearMonth.lengthOfMonth();
 
-  if (releaseDay < 1 || releaseDay > 31) {
-    return false;
-}
+    if (releaseDay > lastDayOfMonth) {
+        throw new IllegalArgumentException("Invalid release day for the specified month and year");
+    }
 
-  return true; 
+    if (releaseMonth == 2 && releaseDay == 29 && !yearMonth.isLeapYear()) {
+        throw new IllegalArgumentException("Invalid release day for February in a non-leap year");
+}
+}
 }
 }
 
