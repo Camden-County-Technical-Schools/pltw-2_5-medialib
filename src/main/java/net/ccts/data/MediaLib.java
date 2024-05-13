@@ -7,53 +7,53 @@ package net.ccts.data;
  */
 public class MediaLib {
   
-private Book[] Books = new Book[10];
+private Book[] books = new Book[10];
 
-private Album[] Albums = new Album[50];
+private Album[] albums = new Album[50];
 
 public Book fetchBook(int index) {
-  if (index < 0 || index >= Books.length){
+  if (index < 0 || index >= books.length){
     throw new IllegalArgumentException("The index" + "(" + index + ")" + "is out of bounds.");
   }
-  return this.Books[index];
+  return this.books[index];
 }
 
 public Album fetchAlbum(int index) {
-    if (index < 0 || index >= Albums.length){
+    if (index < 0 || index >= albums.length){
       throw new IllegalArgumentException("The index" + "(" + index + ")" + "is out of bounds.");
     }
-    return this.Albums[index];
+    return this.albums[index];
   }
 
 public void setBook(int index, Book b){
-  if (index < 0 || index >= Books.length){
+  if (index < 0 || index >= books.length){
       throw new IllegalArgumentException("The index" + "(" + index + ")" + "is out of bounds.");
     }
-    this.Books[index] = b;
+    this.books[index] = b;
   }
 
 public void setAlbum(int index, Album a){
- if (index < 0 || index >= Albums.length){
+ if (index < 0 || index >= albums.length){
       throw new IllegalArgumentException("The index" + "(" + index + ")" + "is out of bounds.");
     }
-    this.Albums[index] = a;
+    this.albums[index] = a;
   }
 
 public Book removeBook(int index){
- if (index < 0 || index >= Books.length){
+ if (index < 0 || index >= books.length){
       throw new IllegalArgumentException("The index" + "(" + index + ")" + "is out of bounds.");
     }
-    Book top = this.Books[index];
-    this.Books[index] = null;
+    Book top = this.books[index];
+    this.books[index] = null;
     return top;
 }
 
 public Album removeAlbum(int index){
- if (index < 0 || index >= Albums.length){
+ if (index < 0 || index >= albums.length){
       throw new IllegalArgumentException("The index" + "(" + index + ")" + "is out of bounds.");
     }
-    Album top = this.Albums[index];
-    this.Albums[index] = null;
+    Album top = this.albums[index];
+    this.albums[index] = null;
     return top;
 }
   public String toString() 
