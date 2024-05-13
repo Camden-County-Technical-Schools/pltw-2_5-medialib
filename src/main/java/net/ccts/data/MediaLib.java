@@ -11,7 +11,7 @@ public class MediaLib
   private Book[] books = new Book[10];
   private Album[] albums = new Album[50];
 
-  public Book fetchbook(int index) {
+  public Book fetchBook(int index) {
     if(index < 0 || index >= books.length) {
       throw new IllegalArgumentException("Index" + index + "is out of bounds.");
     }
