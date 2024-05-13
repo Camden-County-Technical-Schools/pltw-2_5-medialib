@@ -1,4 +1,6 @@
 package net.ccts.data;
+import java.time.YearMonth;
+import java.time.LocalDate;
 /**
  * Represents an album in a music collection.
  * Users can create instances of the Album class by providing the name of the album and the name of the artist.
@@ -14,9 +16,10 @@ public class Album{
 
 // Constructors
 public Album(String n, String a) {
-    this.name = n;
-    this.artist = a;
-}
+  this.name = n;
+  this.artist = a;
+
+    }
 
 // Get name
 public String getName() {
@@ -26,6 +29,13 @@ public String getName() {
 public String getArtist() {
   return artist;
 }
+public void setName(String n) {
+  this.name = n;
+}
+public void setArtist(String a) {
+  this.artist = a;
+}
+
 // Get Release Year
 public int getreleaseYear() {
   return releaseYear;
@@ -81,9 +91,25 @@ public String toString() {
     info = info + " - Release: " + this.releaseYear + "-"+
     this.releaseMonth + "-" + this.releaseDay;
 
-  }
+}
 return info;
 }
+private void validateReleaseDate() {
+  if (releaseYear != 0 && releaseMonth != 0 && releaseDay != 0) {
+    YearMonth yearMonth = YearMonth.of(releaseYear, releaseMonth);
+    int lastDayOfMonth = yearMonth.lengthOfMonth();
+
+    if (releaseDay > lastDayOfMonth) {
+        throw new IllegalArgumentException("Invalid release day for the specified month and year");
+    }
+
+    if (releaseMonth == 2 && releaseDay == 29 && !yearMonth.isLeapYear()) {
+        throw new IllegalArgumentException("Invalid release day for February in a non-leap year");
 }
+}
+}
+}
+
+
 
     
