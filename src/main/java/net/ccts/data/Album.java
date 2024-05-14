@@ -1,4 +1,6 @@
 package net.ccts.data;
+import java.time.YearMonth;
+import java.time.LocalDate;
 
 /** 
 * The Album class is used to track data relating to an album
@@ -76,23 +78,20 @@ public String toString() {
     }
     return info;
 }
-private boolean validateReleaseDate(int releaseYear, int releaseMonth, int releaseDay) {
-if(releaseYear == 0 || releaseMonth == 0 || releaseDay == 0)
-    return true;
 
-if(releaseYear < 1800 || releaseYear > 9999) {
-    return false;
+private void validateReleaseDate() {
+    if(releaseYear != 0 && releaseMonth != 0 && releaseDay != 0) {
+        YearMonth yearMonth = YearMonth.of(releaseYear, releaseMonth);
+        int lastDayOfMonth = yearMonth.lengthOfMonth();
+
+        if(releaseDay > lastDayOfMonth) {
+            throw new IllegalArgumentException("Invalid release day for the specified month and year");
+        }
+
+        if(releaseMonth == 2 && releaseDay == 29 && !yearMonth.isLeapYear()) {
+            throw new IllegalArgumentException("Invalid release day for February in a non-leap year");
+            
+    }            
 }
-
-if(releaseMonth < 1 || releaseMonth > 12) {
-    return false;
-
-}
-
-if(releaseDay < 1 || releaseDay > 31) {
-    return false;
-}
-
-return true;
 }
 }
