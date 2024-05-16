@@ -2,11 +2,10 @@ package net.ccts.data;
 /**
  * an album is a collection or a single song that needs to have a title and an artist name
  * release date is optional
- * @author gitpod
+ * @author AkiotheChaoticPan
  */
-public class Album {
+public class Album extends Media{
 
-    private String name;
     private String artist;
 
     private int releaseYear;
@@ -20,7 +19,7 @@ public class Album {
      */
     public Album(String n, String a) {
         
-        name = n;
+        super.setTitle(n);
         artist = a;
     }
 
@@ -31,7 +30,7 @@ public class Album {
      * @param n - name of the album
      */
     public void setName(String n) {
-        this.name = n;
+        super.setTitle(n);
     }
 
     /**
@@ -125,7 +124,7 @@ public class Album {
      * @return name of album
      */
     public String getName() {
-        return name;
+        return super.getTitle();
     }
 
     /**
@@ -163,12 +162,12 @@ public class Album {
     // additional mmethods
 
     /**
-     * changes the format of the final recieved album
+     * changes the format of the final outputted album
      * @return the title, artist, and release date of the album
      */
     @Override
     public String toString() {
-        String a = "Title: " + name + " | Artist: " + artist + " | Release Date(YYYY/MM/DD): " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
+        String a = "Title: " + super.getTitle() + " | Artist: " + artist + " | Release Date(YYYY/MM/DD): " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
         return a;
     }
     
