@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 import './Login.css';
-import UserRegistration from './UserRegistration.js';
+
 
 function Login() {
 
@@ -12,16 +11,6 @@ function Login() {
     setShowPass(!showPass);
   };
 
-  const userReg = () => {
-    return (
-      <Router>
-        <Switch>
-          {/* Other routes */}
-          <Route path="/new" component={UserRegistration} />
-        </Switch>
-      </Router>
-    );
-  };
 
   return (
     <div className="Login">
@@ -38,7 +27,7 @@ function Login() {
           <input type={showPass ? "text" : "password"} name="password" id="password" placeholder="Enter Password" required />
           <input type="checkbox" checked={showPass} onChange={passVis} />Show Password?
         </div>
-        Don't have an account?<Link to="/new"> Create one!</Link>
+       
         <button type="submit">Submit</button>
         <button type="cancel">Cancel</button>
       </div>
