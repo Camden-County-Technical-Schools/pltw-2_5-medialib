@@ -4,7 +4,7 @@ package net.ccts.data;
  * Hold and sort media with an id number and a title.
  * @author AkiotheChaoticPan
  */
-public class Media {
+public abstract class Media {
     
     private String id; 
     private String title;
