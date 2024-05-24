@@ -76,6 +76,7 @@ public class User {
      * @return userQuestionList.get(i) - get the question value from the index and return it
      */
     public UserQuestion fetchUserQuestion(int i) {
+        if (i > this.userQuestionList.size()) throw new IllegalArgumentException("Index out of bounds");
         return this.userQuestionList.get(i);
     }
 

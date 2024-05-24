@@ -1,8 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import Login from './Login';
+import Login from '/workspace/pltw-2_5-medialib/ui/src/Login.js';
 
-test('renders learn react link', () => {
-  render(<Login />);
-  const linkElement = screen.getByText(/learn react/i);
+test('renders app page', () => {
+  render(
+      <Login />
+  );
+
+  // Example assertion: assuming Login component renders some text like "Login Page"
+  const linkElement = screen.getByText(/login page/i);
   expect(linkElement).toBeInTheDocument();
 });

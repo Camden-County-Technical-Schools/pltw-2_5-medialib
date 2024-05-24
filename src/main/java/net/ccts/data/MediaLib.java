@@ -60,8 +60,11 @@ public class MediaLib
    */
   public void setBook(int index, Book b) {
     if (index >= 0 && index < this.books.size()) this.books.set(index, b);
+    else if (index == this.books.size()) this.books.add(b); 
     else throw new IllegalArgumentException("Index out of bounds.");
+    
   }
+
 
   /**
    * change the album value saved at index and changing it to the value saved at a
@@ -70,6 +73,7 @@ public class MediaLib
    */
   public void setAlbum(int index, Album a) {
     if (index >= 0 && index < this.albums.size()) this.albums.set(index, a);
+    else if (index == this.albums.size()) this.albums.add(a); 
     else throw new IllegalArgumentException("Index out of bounds.");
   }
   
