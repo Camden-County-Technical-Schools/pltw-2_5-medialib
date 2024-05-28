@@ -54,7 +54,7 @@ public class User{
     }
 
     public void setLogin(String l){
-        if ((l.equals(null)) || (l.equals("")) ){
+        if ((l == null) || (l.equals("")) ){
             throw new IllegalArgumentException("Login is required");
         }
         this.login = l;
@@ -68,7 +68,7 @@ public class User{
     }
 
     public void setFirstName(String f){
-        if((f.equals(null)) || (f.equals(""))){
+        if((f == null) || (f.equals(""))){
             throw new IllegalArgumentException("First name is required");
         }
         this.firstName = f;
@@ -91,7 +91,11 @@ public class User{
     }
 
     public UserQuestion fetchUserQuestion(int i){
-        return userQuestionList.get(i);
+        if(i > userQuestionList.size()){
+            throw new IllegalArgumentException("Out of bounds");
+        }
+
+        return this.userQuestionList.get(i);
     }
 
     public ArrayList<UserQuestion> getUserQuestionList(){
@@ -103,7 +107,11 @@ public class User{
     }
 
     public void removeUserQuestion(int i){
-        this.userQuestionList.remove(i);
+        if (i < userQuestionList.size()){
+            throw new IllegalArgumentException("Out of Bounds");
+        } else {
+            this.userQuestionList.remove(i);
+        }
     }
 
      @Override
