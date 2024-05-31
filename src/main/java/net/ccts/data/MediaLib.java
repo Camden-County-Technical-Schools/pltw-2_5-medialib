@@ -1,11 +1,6 @@
 package net.ccts.data;
 
-/**
- * Activity 2.5.7
- * 
- * A MediaLib class for the MediaLibrary program
- */
-public class MediaLib
+ public class MediaLib
 {
   private Book book;
 

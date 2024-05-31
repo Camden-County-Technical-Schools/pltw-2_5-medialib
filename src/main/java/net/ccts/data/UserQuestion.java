@@ -1,16 +1,11 @@
-
-
 package net.ccts.data;
 
-
 import java.util.ArrayList;
-
 
 public class UserQuestion {
    private String question;
    private String answer;
    private static final ArrayList<String> questionList = new ArrayList<>();
-
 
    static {
        questionList.add("What is your favorite Spanish food?");
@@ -19,7 +14,6 @@ public class UserQuestion {
        questionList.add("What kind of car do you drive?");
        questionList.add("What is your nickname?");
    }
-
 
    public UserQuestion(String question, String answer) {
        this.question = question;
@@ -30,26 +24,21 @@ public class UserQuestion {
        return question;
    }
 
-
    public void setQuestion(String question) {
        this.question = question;
    }
 
-
-   public string getAnswer(){
+   public String getAnswer(){
        return answer;
    }
-
 
    public void setAnswer(){
        this.answer = answer;
    }
 
-
    public static ArrayList<String> getQuestionList() {
        return questionList;
    }
-
 
    @Override
    public String toString() {

@@ -1,26 +1,16 @@
 package net.ccts.data;
 
-/**
- * Represents an album with its name, artist, and release date.
- */
-public class Album{
-    private String name;
+public class Album extends Media{
     private String artist;
     private int releaseYear;
     private int releaseMonth;
     private int releaseDay;
 
-    public Album(String name, String artist) {
-        this.name = name;
+    public Album(String name, String artist, String id) {
+        super (id, name);
         this.artist = artist;
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
     public String getArtist() {
         return artist;
     }
@@ -62,6 +52,6 @@ public class Album{
 
     @Override
     public String toString() {
-        return name + " - Release: " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
+        return getTitle() + " - Release: " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
     }
 }
