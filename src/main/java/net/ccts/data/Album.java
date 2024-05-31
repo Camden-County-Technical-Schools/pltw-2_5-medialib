@@ -4,23 +4,20 @@
  * An Album class for the MediaLibrary program
  */
 package net.ccts.data;
-public class Album{  
-  private String name;
+public class Album extends Media{  
   private String artist;
   private int releaseYear;
   private int releaseMonth;
   private int releaseDay;
 
 
-public Album(String t, String a)
+public Album(String t, String a, String id)
   {
-    this.name = t;
+    super (id, t);
     this.artist = a;
   }
 
-public String getName() {
-    return name;
-  }
+
 
   public String getArtist() {
     return artist;
@@ -56,15 +53,13 @@ public void setReleaseYear(int t) {
   throw new IllegalArgumentException("Release day must be between 1 and 31, received" + t);
   }
 
-  public void setName(String t) {
-    name = t;
-  }
+
   public void setArtist(String a) {
     artist = a;
   }
 @Override
 public String toString() {
-  String info = name + "Release: " + releaseYear + " - " + releaseMonth + " - " + releaseDay;
+  String info = title + "Release: " + releaseYear + " - " + releaseMonth + " - " + releaseDay;
   return info;
 }
 

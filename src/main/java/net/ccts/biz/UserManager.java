@@ -9,7 +9,7 @@ import java.util.Arrays;
  * A UserManager class for the MediaLibrary program
  */
 public class UserManager {
-    public static HashMap<String, User> userMap = new HashMap<String, User>();
+    private static HashMap<String, User> userMap = new HashMap<String, User>();
     public static User registerUser(User u){
         if (u == null){
             throw new IllegalArgumentException("User is required.");
