@@ -5,24 +5,23 @@ package net.ccts.data;
 import java.time.YearMonth;
 
 /* The Album class is used to track data relating to a specific album */
-public class Album {
+public class Album extends Media {
 
-    private String name;
     private String artist;
     private int releaseYear;
     private int releaseMonth;
     private int releaseDay;
 
     /* Constructor */
-    public Album(String n, String a) {
-        this.name = n;
+    public Album(String id, String n, String a) {
+        super(id, n);
         this.artist = a;
     }
 
 
     /* Accessor Methods */
     public String getName() {
-        return name;
+        return super.getTitle();
     }
 
     public String getArtist() {
@@ -43,7 +42,7 @@ public class Album {
 
     /* Mutator Methods */
     public void setName(String n) {
-        this.name = n;
+        super.setTitle(n);
     }
 
     public void setArtist(String a) {
@@ -77,9 +76,9 @@ public class Album {
     /* toString Method */
     @Override
     public String toString() {
-        String info = this.name;
+        String info = this.getTitle();
         if (this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0) {
-            return this.name + "- Release:" + this.releaseYear + "-" + this.releaseMonth + "-" + releaseDay;
+            info += " - Release: " + this.releaseYear + "-" + this.releaseMonth + "-" + releaseDay;
         }
         return info;
     }

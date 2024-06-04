@@ -1,28 +1,26 @@
 package net.ccts.data;
 
+import javax.xml.crypto.Data;
+
 /*
  * Activity 2.5.7
  *
  * A Book class for the MediaLibrary program
  */
-public class Book
-{
-  private String isbn;
-  private String title;
+public class Book extends Media {
   private String author;
   private int rating;
   
   /*** Constructor ****/
-  public Book(String t, String a, String i)
+  public Book(String id, String t, String a)
   {
-    this.title = t;
+    super(id, t);
     this.author = a;
-    this.isbn = i;
   }
   
    /*** Accessor methods ***/
   public String getTitle() {
-    return title;
+    return super.getTitle();
   }
 
   public String getAuthor() {
@@ -35,8 +33,8 @@ public class Book
   
   public String toString() 
   {
-    String info = "\"" + title + "\", written by " + author;
-    info += ", ISBN: " + this.isbn;
+    String info = "\"" + super.getTitle() + "\", written by " + author;
+    info += ", ISBN: " + super.getId();
     if (rating != 0) {
       info += ", rating is " + rating;
     }
@@ -45,7 +43,7 @@ public class Book
 
   /*** Mutator methods ***/
   public void setTitle(String t) {
-    this.title = t;
+    super.setTitle(t);
   }
 
   public void setAuthor(String a) {
@@ -56,17 +54,9 @@ public class Book
     this.rating = r;
   }
 
-  public String getISBN() {
-    return this.isbn;
-  }
-
-  public void setISBN(String i) {
-    this.isbn = i;
-  }
-
   @Override
   public int hashCode() {
-    return this.isbn.hashCode();
+    return this.getId().hashCode();
   }
 
   @Override

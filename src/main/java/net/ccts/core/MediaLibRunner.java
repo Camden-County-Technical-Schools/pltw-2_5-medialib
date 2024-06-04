@@ -20,9 +20,9 @@ public class MediaLibRunner
   }
 
   private static void demoSets() {
-    Album a1 = new Album("Saviors", "Green Day");
-    Album a2 = new Album("Blue Electric Light", "Lenny Kravitz");
-    Album a3 = new Album("Blue Electric Light", "Lenny Kravitz");
+    Album a1 = new Album("USRE12201100", "Saviors", "Green Day");
+    Album a2 = new Album("USUM71310136", "Someone Like You", "Lenny Kravitz");
+    Album a3 = new Album("USUM71310136", "Someone Like You", "Lenny Kravitz");
 
     LinkedHashSet<Album> albumSet = new LinkedHashSet<>(6);
     albumSet.add(a1);
@@ -37,9 +37,9 @@ public class MediaLibRunner
       System.out.println(album);
     }
 
-    Book b1 = new Book("The Ukraine", "Artem Chapeye", "9781644212950");
-    Book b2 = new Book("Wandering Stars - A novel", "Tommy Orange", "9780593318256");
-    Book b3 = new Book("Wandering Stars", "Tommy Orange", "9780593318256");
+    Book b1 = new Book("9781644212950", "The Ukraine", "Artem Chapeye");
+    Book b2 = new Book("9780593318256", "Wandering Stars - A novel", "Tommy Orange");
+    Book b3 = new Book("9780593318256", "Wandering Stars", "Tommy Orange");
 
     LinkedHashSet<Book> bookSet = new LinkedHashSet<>(6);
     bookSet.add(b1);
