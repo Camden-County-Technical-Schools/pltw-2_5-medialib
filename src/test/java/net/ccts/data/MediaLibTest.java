@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
+import java.util.List;
+
 public class MediaLibTest {
 
     @Test
@@ -77,7 +79,7 @@ public class MediaLibTest {
 
         Book removed = lib.removeBook(1);
         assertEquals(b2.getTitle(), removed.getTitle());
-        assertNull(lib.fetchBook(1));
+        assertEquals(lib.fetchAllMedia().size(), 1);
     }
 
     @Test
@@ -90,7 +92,7 @@ public class MediaLibTest {
 
         Album removed = lib.removeAlbum(1);
         assertEquals(a2.getArtist(), removed.getArtist());
-        assertNull(lib.fetchAlbum(1));
+        assertEquals(lib.fetchAllMedia().size(), 1);
     }
 
     @Test
