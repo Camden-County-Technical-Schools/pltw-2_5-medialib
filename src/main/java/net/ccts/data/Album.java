@@ -1,16 +1,15 @@
 package net.ccts.data;
 
 // An album is a media tool that contains 6 or more recordings of music
-public class Album {
+public class Album extends Media{
 
     private String artist;
     private int releaseYear;
-    private String name;
     private int releaseDay;
     private int releaseMonth;
 
-    public Album(String n, String a) {
-        this.name = n;
+    public Album(String id, String title, String a) {
+        super(id, title);
         this.artist = a;
     }
 
@@ -23,7 +22,7 @@ public class Album {
     }
 
     public String getName() {
-        return this.name;
+        return super.title;
     }
 
     public int getReleaseDay() {
@@ -35,7 +34,7 @@ public class Album {
     }
 
     public void setName(String n) {
-        this.name = n;
+        super.title = n;
     }
 
     public void setArtist(String a) {
@@ -68,6 +67,6 @@ public class Album {
 
     @Override
     public String toString() {
-        return this.name + " - Release: " + this.releaseYear + "-" + this.releaseMonth + "-" + this.releaseDay;
+        return super.title + " - Release: " + this.releaseYear + "-" + this.releaseMonth + "-" + this.releaseDay;
     }
 }
