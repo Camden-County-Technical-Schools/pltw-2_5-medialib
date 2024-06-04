@@ -1,6 +1,7 @@
 package net.ccts.biz;
 
 import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,11 +18,13 @@ public class UserManager {
     // Static HashMap to store users by their login
     private static Map<String, User> userMap = new HashMap<>();
 
-   
-     // @param u the user to register
-     // @return the registered user
-     // @throws IllegalArgumentException if any validation fails
-     
+    /**
+     * Registers a new user.
+     * 
+     * @param u the user to register
+     * @return the registered user
+     * @throws IllegalArgumentException if any validation fails
+     */
     public static User registerUser(User u) {
         if (u == null) {
             throw new IllegalArgumentException("User is required");
@@ -46,21 +49,27 @@ public class UserManager {
         return u;
     }
 
-   
-     // @param login the user's login
-     // @param password the user's password
-     // @return the User if login is successful, otherwise null
-     
+    /**
+     * Handles user login.
+     * 
+     * @param login the user's login
+     * @param password the user's password
+     * @return the User if login is successful, otherwise null
+     */
     public static User handleLogin(String login, char[] password) {
         User user = userMap.get(login);
-        if (user == null || !new String(password).equals(new String(user.getPassword()))) {
+        if (user == null || !Arrays.equals(password, user.getPassword())) {
             return null;
         }
         return user;
     }
-    //  @param login the user's login
-    //  @return the User if found, otherwise null
-     
+
+    /**
+     * Finds a user by their login.
+     * 
+     * @param login the user's login
+     * @return the User if found, otherwise null
+     */
     public static User findUser(String login) {
         if (login == null || login.isEmpty()) {
             return null;
