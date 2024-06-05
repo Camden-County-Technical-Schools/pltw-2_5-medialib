@@ -1,24 +1,20 @@
 package net.ccts.data;
 //An album is part of a media libray that could represent music, movies, or books
 
-public class Album {
+public class Album extends Media {
     private String artist;
-    private String name;
     private int releaseYear;
     private int releaseDay;
     private int releaseMonth;
 
-    public Album(String n, String a) {
-        this.name = n;
+    public Album(String id, String title, String a) {
+        super(id, title);
         this.artist = a;
     }
     public String getArtist() {
         return this.artist;
     }
-    public String getName() {
-       return this.name;
-    }
-
+   
     public int getreleaseYear() { 
         return this.releaseYear;
     }
@@ -29,9 +25,6 @@ public class Album {
         return this.releaseMonth;
     }
 
-    public void setname(String n){
-        this.name = n;
-    }
     public void setartist(String a){
         this.artist = a;
     }
@@ -62,9 +55,9 @@ public class Album {
     }
     @Override
     public String toString() {
-       String info = this.name;
+       String info = getTitle();
        if (this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0) {
-        return this.name +"-Release:" + this.releaseYear +"-" + this.releaseMonth + "-" + this.releaseDay;
+        return getTitle() +"-Release:" + this.releaseYear +"-" + this.releaseMonth + "-" + this.releaseDay;
        } 
        return info;
     }

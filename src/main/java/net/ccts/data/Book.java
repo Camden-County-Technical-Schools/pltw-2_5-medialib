@@ -5,25 +5,20 @@ package net.ccts.data;
  *
  * A Book class for the MediaLibrary program
  */
-public class Book
+public class Book extends Media
 {
-  private String title;
   private String author;
   private int rating;
   
   /*** Constructor ****/
-  public Book(String t, String a)
+  public Book(String id, String title, String a)
   {
-    title = t;
+    super(id, title);
     author = a;
     rating = 0;
   }
   
    /*** Accessor methods ***/
-  public String getTitle() {
-    return title;
-  }
-
   public String getAuthor() {
     return author;
   }
@@ -34,7 +29,7 @@ public class Book
   
   public String toString() 
   {
-    String info = "\"" + title + "\", written by " + author;
+    String info = "\"" + getTitle() + "\", written by " + author;
     if (rating != 0) 
     { 
       info += ", rating is " + rating;
@@ -43,10 +38,6 @@ public class Book
   }
 
   /*** Mutator methods ***/
-  public void setTitle(String t) {
-    title = t;
-  }
-
   public void setAuthor(String a) {
     author = a;
   }
