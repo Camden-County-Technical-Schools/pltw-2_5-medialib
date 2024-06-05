@@ -20,9 +20,8 @@ public class Album extends Media {
     this.artist = artist;
   }
 
-  // Get title (name)
-  @Override
-  public String getTitle() {
+  // Get name (previously getTitle)
+  public String getName() {
     return super.getTitle();  // Get the title from the parent Media class
   }
 
@@ -31,8 +30,7 @@ public class Album extends Media {
     return artist;
   }
 
-  // Set title (name)
-  @Override
+  // Set title
   public void setTitle(String name) {
     super.setTitle(name);  // Set the title in the parent Media class
   }
@@ -91,7 +89,7 @@ public class Album extends Media {
   // Override toString method
   @Override
   public String toString() {
-    String info = getTitle();
+    String info = getName();
     if (this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0) {
       info = info + " - Release: " + this.releaseYear + "-" +
           this.releaseMonth + "-" + this.releaseDay;

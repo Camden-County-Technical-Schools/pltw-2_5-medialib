@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * The User class represents a user with login credentials, 
- * personal information,and a list of security questions.
+ * personal information, and a list of security questions.
  */
 public class User {
 
@@ -18,14 +18,11 @@ public class User {
     private int loginFailureCount;
     private ArrayList<UserQuestion> userQuestionList;
 
-
-// Constructor for the User class.
-    public User(String login, char[] password, String firstName, String lastName) {
+    // Constructor for the User class.
+    public User(String login, char[] password, String firstName) {
         setLogin(login);
         setPassword(password);
         setFirstName(firstName);
-        this.lastName = lastName;
-        this.registered = ZonedDateTime.now();
         this.userQuestionList = new ArrayList<>(3);
     }
 
