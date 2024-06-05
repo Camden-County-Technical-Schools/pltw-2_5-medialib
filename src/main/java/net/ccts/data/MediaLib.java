@@ -1,5 +1,6 @@
 package net.ccts.data;
-
+import java.util.ArrayList;
+import java.util.*;
 /**
  * Activity 2.5.7
  * 
@@ -7,53 +8,62 @@ package net.ccts.data;
  */
 public class MediaLib
 {
-
-  private Book[] books = new Book[10];
-  private Album[] albums = new Album[50];
+  private static ArrayList<Book> books = new ArrayList<Book>(10);
+  private static ArrayList<Album> albums = new ArrayList<Album>(50);
+  
   public Book fetchBook(int index){
-  if (index < 0 || index >= books.length){
+  if (index < 0 || index >= books.size()){
     throw new IllegalArgumentException("Index is out of bounds");
   }
-  return books[index];
+  return books.get(index);
   }
   public Album fetchAlbum(int index){
-    if (index < 0 || index >= albums.length){
+    if (index < 0 || index >= albums.size()){
     throw new IllegalArgumentException("Index is out of bounds");
   }
-  return albums[index];
+  return albums.get(index);
   }
   public void setBook(int index, Book b){
-    if (index < 0 || index >= books.length){
+    if (index < 0 || index >= books.size()){
     throw new IllegalArgumentException("Index is out of bounds");
   }
-    books[index] = b;
+    books.set(index, b);
   }
   public void setAlbum(int index, Album a){
-    if (index < 0 || index >= albums.length){
+    if (index < 0 || index >= albums.size()){
     throw new IllegalArgumentException("Index is out of bounds");
   }
-    albums[index] = a;
+    albums.set(index, a);
   }
   public Book removeBook(int index){
-    if (index < 0 || index >= books.length){
+    if (index < 0 || index >= books.size()){
     throw new IllegalArgumentException("Index is out of bounds");
   }
-  Book b = books[index];
-  books[index] = null;
-  return b;
+  return books.remove(index);
   }
   public Album removeAlbum(int index){
-    if (index < 0 || index >= albums.length){
+    if (index < 0 || index >= albums.size()){
     throw new IllegalArgumentException("Index is out of bounds");
   }
-  Album a = albums[index];
-  albums[index] = null;
-  return a;
+  return albums.remove(index);
   }
   public String toString() 
   {
     String info = "";
     
     return info;
+  }
+  public ArrayList<Media> fetchAllMedia(){
+    ArrayList<Media> allMedia = new ArrayList<Media>(books);
+    allMedia.addAll(albums);
+    return allMedia;
+
+  }
+
+  public void addBook(Book b){
+    books.add(b);
+  }
+  public void addAlbum(Album a){
+    albums.add(a);
   }
 }
