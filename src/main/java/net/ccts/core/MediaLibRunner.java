@@ -1,6 +1,10 @@
 package net.ccts.core;
 
+import net.ccts.api.RestApiApplication;
 import net.ccts.data.*;
+import org.restlet.Component;
+import org.restlet.Server;
+import org.restlet.data.Protocol;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -14,9 +18,19 @@ import java.util.Map;
  */
 public class MediaLibRunner
 {
-  public static void main(String[] args)
-  {
-    demoSets();
+  public static void main(String[] args) throws Exception {
+    //demoSets();
+    Component c = new Component();
+    c.getClients().add(Protocol.FILE);
+    Server server = c.getServers().add(Protocol.HTTP, 8080);
+
+    server.getContext().getParameters().add("useForwardedForHeader", "true");
+//    server.getContext().getParameters().add("keystorePath", "");
+//    server.getContext().getParameters().add("keystorePassword", "");
+//    server.getContext().getParameters().add("keyPassword", "");
+
+    c.getDefaultHost().attach(new RestApiApplication());
+    c.start();
   }
 
   private static void demoSets() {
