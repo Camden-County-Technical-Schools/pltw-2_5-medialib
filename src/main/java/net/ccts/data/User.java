@@ -19,7 +19,7 @@ public class User{
     private int loginFailureCount;
     private ArrayList<UserQuestion> userQuestionList = new ArrayList<>(3);
 
-    public User(String f, String l, char[] p){
+    public User(String l, char[] p , String f){
         this.firstName = f;
         this.login = l;
         this.password = p;
@@ -57,7 +57,7 @@ public class User{
         if ((l == null) || (l.equals("")) ){
             throw new IllegalArgumentException("Login is required");
         }
-        this.login = l;
+        this.login = l.toLowerCase();
     }
 
     public void setPassword(char[] p){
@@ -107,7 +107,7 @@ public class User{
     }
 
     public void removeUserQuestion(int i){
-        if (i < userQuestionList.size()){
+        if (i > userQuestionList.size()){
             throw new IllegalArgumentException("Out of Bounds");
         } else {
             this.userQuestionList.remove(i);
@@ -116,7 +116,7 @@ public class User{
 
      @Override
     public String toString() {
-        return "First name: " + this.firstName + " Login: " + this.login;
+        return this.firstName + " - " + this.login;
     }
 
 }

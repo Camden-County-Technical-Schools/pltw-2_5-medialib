@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public class MediaLib{
 
-  public static ArrayList<Book> books = new ArrayList<>(10);
-  public static ArrayList<Album> albums = new ArrayList<>(50);
+  public ArrayList<Book> books = new ArrayList<>(10);
+  public ArrayList<Album> albums = new ArrayList<>(50);
 
   public Book fetchBook(int index){
     if (index < 0 || index >= books.size()){
@@ -64,7 +64,7 @@ public class MediaLib{
     return info;
   }
 
-  public static ArrayList<Media> fetchAllMedia(){
+  public ArrayList<Media> fetchAllMedia(){
     ArrayList<Media> allMedia = new ArrayList<>();
     
     for (Book b : books){

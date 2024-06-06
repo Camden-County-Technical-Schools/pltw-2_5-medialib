@@ -46,7 +46,7 @@ public class UserQuestion{
 
     @Override
     public String toString() {
-        return "Q: " + this.question + " A: " + this.answer;
+        return "Q: " + this.question + " - A: " + this.answer;
     }
 
 
