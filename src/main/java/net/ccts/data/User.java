@@ -110,7 +110,7 @@ public ArrayList<UserQuestion> getUserQuestionList() {
 
 @Override
 public String toString() {
-    return firstName + "-" + login;
+    return firstName + " - " + login;
 }
 
 

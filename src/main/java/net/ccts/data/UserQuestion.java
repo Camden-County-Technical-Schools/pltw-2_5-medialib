@@ -42,6 +42,6 @@ public static ArrayList<String> getQuestionList() {
 
 @Override
 public String toString() {
-    return "Q: " + question + "-A:" + answer;
+    return "Q: " + question + " - A: " + answer;
     }
 }

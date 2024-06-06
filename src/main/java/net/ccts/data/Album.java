@@ -6,42 +6,41 @@ import java.time.LocalDate;
 * The Album class is used to track data relating to an album
 */
 
-public class Album {
+public class Album extends Media{
 
-private String name;
 private String artist;
 private int releaseYear; 
 private int releaseMonth; 
 private int releaseDay;
 
-public Album(String n, String a) {
-    this.name = n;
+public Album(String id, String n, String a) {
+    super(id, n);
     this.artist = a;
 
 }
 
 public String getName() {
-    return name;
+    return title;
 }
 
 public String getArtist() {
     return artist;
 }
 
-public int getYear() {
+public int getReleaseYear() {
     return releaseYear;
 }
 
-public int getMonth() {
+public int getReleaseMonth() {
     return releaseMonth;
 }
 
-public int getDay() {
+public int getReleaseDay() {
     return releaseDay;
 }
 
 public void setName(String n) {
-    this.name = n;
+    super.title = n;
 }
 
 public void setArtist(String a) {
@@ -71,9 +70,9 @@ public void setReleaseYear(int releaseYear) {
 
 @Override
 public String toString() {
-    String info = this.name;
+    String info = super.title;
     if(this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0) {
-        info = info + " - Release: " + this.releaseYear + "." + this.releaseMonth + "." + this.releaseDay;
+        info = info + " - Release: " + this.releaseYear + "-" + this.releaseMonth + "-" + this.releaseDay;
 
     }
     return info;

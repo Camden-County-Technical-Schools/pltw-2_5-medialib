@@ -1,4 +1,5 @@
 package net.ccts.data;
+import java.util.ArrayList;
 
 /**
  * Activity 2.5.7
@@ -8,52 +9,52 @@ package net.ccts.data;
 public class MediaLib
 {
 
-  private Book[] books = new Book[10];
-  private Album[] albums = new Album[50];
+  private ArrayList<Book> books = new ArrayList<Book>(10);
+  private ArrayList<Album> albums = new ArrayList<Album>(50);
 
   public Book fetchBook(int index) {
-    if(index < 0 || index >= books.length) {
+    if(index < 0 || index >= books.size()) {
       throw new IllegalArgumentException("Index" + index + "is out of bounds.");
     }
-    return this.books[index];
+    return this.books.get(index);
   }
 
     public Album fetchAlbum(int index) {
-    if(index < 0 || index >= albums.length) {
+    if(index < 0 || index >= albums.size()) {
       throw new IllegalArgumentException("Index" + index + "is out of bounds");
     }
-    return this.albums[index];
+    return this.albums.get(index);
   }
 
   public void setBook(int index, Book b) {
-    if(index < 0 || index >= books.length) {
+    if(index < 0 || index >= books.size()) {
       throw new IllegalArgumentException("Index" + index + "is out of bounds");
     }
-    this.books[index] = b;
+    this.books.set(index, b);
   } 
 
   public void setAlbum(int index, Album a) {
-    if(index < 0 || index >= albums.length) {
+    if(index < 0 || index >= albums.size()) {
       throw new IllegalArgumentException("Index" + index + "is out of bounds");
     }
-    this.albums[index] = a;
+    this.albums.set(index, a);
   } 
 
   public Book removeBook(int index) {
-    if(index < 0 || index >= books.length) {
+    if(index < 0 || index >= books.size()) {
       throw new IllegalArgumentException("Index" + index + "is out of bounds");
     }
-    Book tmp = this.books[index];
-    this.books[index] = null;
+    Book tmp = this.books.get(index);
+    this.books.set(index, null);
     return tmp;
   }
 
   public Album removeAlbum(int index) {
-    if(index < 0 || index >= albums.length) {
+    if(index < 0 || index >= albums.size()) {
       throw new IllegalArgumentException("Index" + index + "is out of bounds");
     }
-    Album tmp = this.albums[index];
-    this.albums[index] = null;
+    Album tmp = this.albums.get(index);
+    this.albums.set(index, null);
     return tmp;
   }
 
@@ -63,5 +64,29 @@ public class MediaLib
     String info = "";
     
     return info;
+  }
+
+  public ArrayList<Media> fetchAllMedia() {
+    ArrayList<Media> nonnull = new ArrayList<Media>();
+
+    for (Book b : books) {
+      if (b != null)
+        nonnull.add(b);
+    }
+
+    for (Album a : albums) {
+      if (a != null)
+        nonnull.add(a);
+    }
+
+    return nonnull;
+  }
+
+  public void addBook(Book b) {
+    this.books.add(b);
+  }
+
+  public void addAlbum(Album a) {
+    this.albums.add(a);
   }
 }
