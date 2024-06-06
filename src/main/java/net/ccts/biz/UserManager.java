@@ -1,5 +1,6 @@
-package net.ccts.biz;
+/**package net.ccts.biz;
 
 public class UserManager {
 
 }
+*/
