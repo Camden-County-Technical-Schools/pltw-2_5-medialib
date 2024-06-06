@@ -50,8 +50,25 @@ public class MediaLib
 
     return allMedia;
   }
+  
 
   // mutator methods
+
+  /**
+   * add a book to books list
+   * @param b - new book to add
+   */
+  public void addBook(Book b) {
+    this.books.add(b);
+  }
+
+  /**
+   * add an album to albums list
+   * @param a - new album to add
+   */
+  public void addAlbum(Album a) {
+    this.albums.add(a);
+  }
 
   /**
    * change the book value saved at index and changing it to the value saved at b

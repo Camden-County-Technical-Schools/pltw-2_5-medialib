@@ -11,14 +11,22 @@ public class Book extends Media {
   
   /*** Constructor ****/
   
-  public Book(String t, String a)
+  public Book(String i, String t, String a)
   {
-    super.setTitle(t);
+    super(i, t);
     author = a;
     rating = 0;
   }
   
    /*** Accessor methods ***/
+
+  /**
+   * retrieve the id set in constructor, or changed by set method
+   * @return id of album
+    */
+  public String getId() {
+    return super.getID();
+  }
 
   public String getAuthor() {
     return author;

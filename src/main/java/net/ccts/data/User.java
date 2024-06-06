@@ -29,7 +29,7 @@ public class User {
      * @param f - first name string of the user
      * @param p - password character array of the user
      */
-    public User(String l, String f, char[] p) {
+    public User(String l,  char[] p, String f) {
 
         this.login = l;
         this.firstName = f;
@@ -46,7 +46,7 @@ public class User {
     @Override
     public String toString() {
 
-        String a = this.firstName + "-" + this.login;
+        String a = this.firstName + " - " + this.login;
         return a;
 
     }
@@ -187,6 +187,7 @@ public class User {
      * @param last - date of previous login attempt
      */
     public void setLastLogin(ZonedDateTime last) {
+        this.lastLogin = last;
     }
 
     /**

@@ -17,9 +17,9 @@ public class Album extends Media{
      * @param n - name/title of the album
      * @param a - artist or creator of the album
      */
-    public Album(String n, String a) {
+    public Album(String i, String n, String a) {
         
-        super.setTitle(n);
+        super(i, n);
         artist = a;
     }
 
@@ -45,7 +45,7 @@ public class Album extends Media{
      * set the release year of the album with a year between 1800 and 9999
      * @param y - year the album was released
      */
-    public void setYear(int y) {
+    public void setReleaseYear(int y) {
         if (y >= 1800 && y <= 9999) this.releaseYear = y;
         else throw new IllegalArgumentException("Release year must be between 1800 and 9999, received " + y);
         
@@ -55,7 +55,7 @@ public class Album extends Media{
      * set the release month of the album with a motnh between 1 and 12
      * @param m - month the album was released
      */
-    public void setMonth(int m) {
+    public void setReleaseMonth(int m) {
         if (m >= 1 && m <= 12) this.releaseMonth = m;
         else throw new IllegalArgumentException("Release month must be between 1 and 12, received " + m);
     }
@@ -65,7 +65,7 @@ public class Album extends Media{
      * being a value inline with the amount of days per month
      * @param d - day the album was released
      */
-    public void setDay(int d) {
+    public void setReleaseDay(int d) {
         if (d >= 1 && d <= 31) {
             switch (this.releaseMonth) {
                 case 1: 
@@ -139,7 +139,7 @@ public class Album extends Media{
      * retrieve the release year set in constructor, or changed by set method
      * @return release year of album
      */
-    public int getYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
@@ -147,7 +147,7 @@ public class Album extends Media{
      * retrieve the release month set in constructor, or changed by set method
      * @return release month of album
      */
-    public int getMonth() {
+    public int getReleaseMonth() {
         return releaseMonth;
     }
 
@@ -155,9 +155,18 @@ public class Album extends Media{
      * retrieve the release day set in constructor, or changed by set method
      * @return release day of album
      */
-    public int getDay() {
+    public int getReleaseDay() {
         return releaseDay;
     }
+
+    /**
+     * retrieve the id set in constructor, or changed by set method
+     * @return id of album
+     */
+    public String getId() {
+        return super.getID();
+    }
+    
 
     // additional mmethods
 
@@ -167,7 +176,7 @@ public class Album extends Media{
      */
     @Override
     public String toString() {
-        String a = "Title: " + super.getTitle() + " | Artist: " + artist + " | Release Date(YYYY/MM/DD): " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
+        String a = super.getTitle() + " - Release: " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
         return a;
     }
     
