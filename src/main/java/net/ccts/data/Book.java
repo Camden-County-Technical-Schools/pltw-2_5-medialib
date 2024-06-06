@@ -13,7 +13,7 @@ public class Book extends Media
   /*** Constructor ****/
   public Book(String id, String t, String a)
   {
-    super(t, id);
+    super(id, t);
     author = a;
     rating = 0;
   }

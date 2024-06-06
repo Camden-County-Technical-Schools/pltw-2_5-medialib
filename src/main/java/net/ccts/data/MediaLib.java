@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class MediaLib
 {
-  private static ArrayList<Book> books = new ArrayList<Book>(10);
-  private static ArrayList<Album> albums = new ArrayList<Album>(50);
+  private  ArrayList<Book> books = new ArrayList<Book>(10);
+  private  ArrayList<Album> albums = new ArrayList<Album>(50);
   
   public Book fetchBook(int index){
   if (index < 0 || index >= books.size()){

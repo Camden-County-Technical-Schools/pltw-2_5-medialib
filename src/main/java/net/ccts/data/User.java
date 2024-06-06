@@ -14,8 +14,8 @@ public class User{
     private ZonedDateTime registered;
     private ZonedDateTime lastLogin;
     private int loginFailureCount;
-    private static final ArrayList<UserQuestion> userQuestionList = new ArrayList<UserQuestion>(3);
-public User(String l, String f, char[] p)
+    private final ArrayList<UserQuestion> userQuestionList = new ArrayList<UserQuestion>(3);
+public User(String l, char[] p, String f)
   {
     this.login = l;
     this.firstName = f;
@@ -46,19 +46,19 @@ public ArrayList<UserQuestion> getUserQuestionList() {
     return userQuestionList;
   }
 public void setLogin(String l) {
-    if (l == null){
+    if (l == null || l == ""){
         throw new IllegalArgumentException("Login is required");
     }
-    login = l;
+    login = l.toLowerCase();
   }
 public void setPassword(char[] p) {
-    if (p == null){
+    if (p == null || p[0] == ' '){
         throw new IllegalArgumentException("Password is required");
     }
     password = p;
   }
 public void setFirstName(String f) {
-    if (f == null){
+    if (f == null || f == ""){
         throw new IllegalArgumentException("First name is required");
     }
     firstName = f;
@@ -90,5 +90,10 @@ public void removeUserQuestion(int i){
   }
   UserQuestion q = userQuestionList.get(i);
   userQuestionList.remove(i);
+}
+@Override
+public String toString() {
+  String info = firstName + " - " + login;
+  return info;
 }
 }

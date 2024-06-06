@@ -11,13 +11,15 @@ public class Album extends Media{
   private int releaseDay;
 
 
-public Album(String t, String a, String id)
+public Album(String id, String t, String a)
   {
     super (id, t);
     this.artist = a;
   }
 
-
+public String getName() {
+    return super.getTitle();
+  }
 
   public String getArtist() {
     return artist;
@@ -38,28 +40,34 @@ public Album(String t, String a, String id)
 public void setReleaseYear(int t) {
   if (t > 1799 && t < 10000)
     releaseYear = t;
-  throw new IllegalArgumentException("Release year must be between 1800 and 9999, received" + t);
+  else
+    throw new IllegalArgumentException("Release year must be between 1800 and 9999, received" + t);
   }
 
   public void setReleaseMonth(int t) {
   if (t > 0 && t < 13)
     releaseMonth = t;
-  throw new IllegalArgumentException("Release month must be between 1 and 12, received" + t);
+  else
+    throw new IllegalArgumentException("Release month must be between 1 and 12, received" + t);
   }
 
   public void setReleaseDay(int t) {
   if (t > 0 && t < 32)
     releaseDay = t;
-  throw new IllegalArgumentException("Release day must be between 1 and 31, received" + t);
+  else
+    throw new IllegalArgumentException("Release day must be between 1 and 31, received" + t);
   }
 
 
   public void setArtist(String a) {
     artist = a;
   }
+  public void setName(String n) {
+    super.setTitle(n);
+  }
 @Override
 public String toString() {
-  String info = title + "Release: " + releaseYear + " - " + releaseMonth + " - " + releaseDay;
+  String info = super.title + " - Release: " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
   return info;
 }
 

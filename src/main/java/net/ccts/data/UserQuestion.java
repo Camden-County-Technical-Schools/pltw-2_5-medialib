@@ -27,7 +27,7 @@ public String getQuestion() {
   public String getAnswer() {
     return answer;
   }
-  public ArrayList<String> getQuestionList() {
+  public static ArrayList<String> getQuestionList() {
     return questionList;
   }
   public void setQuestion(String q) {
@@ -38,7 +38,7 @@ public String getQuestion() {
   }
 @Override
 public String toString() {
-  String info = "Q: " + question + " " + "A: " + answer;
+  String info = "Q: " + question + " - A: " + answer;
   return info;
 }
 
