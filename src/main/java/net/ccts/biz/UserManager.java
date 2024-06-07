@@ -21,4 +21,13 @@ public class UserManager {
         }
         return userMap.get(login);
     }
+
+    public static User removeUser(User u) {
+        if (u != null) {
+            User user = userMap.remove(u.getLogin());
+            user.setRegistered(null);
+            return user;
+        }
+        return null;
+    }
 }
