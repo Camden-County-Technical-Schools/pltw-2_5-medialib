@@ -9,7 +9,7 @@ public class UserQuestion {
     private String question;
     private String answer;
     public static final ArrayList<String> questionList = new ArrayList<>(Arrays.asList(
-        "what is your favorite Spanish food?",
+        "What is your favorite Spanish food?",
         "What is your favorite color?",
         "Where did you go to school?",
         "What kind of car do you drive?",
@@ -34,7 +34,7 @@ public class UserQuestion {
     public String getAnswer() {
         return answer;
     }
-    public void setAnswer() {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 
