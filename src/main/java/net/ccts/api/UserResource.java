@@ -69,15 +69,15 @@ public class UserResource extends ApiResource {
             setStatus(Status.valueOf(404));
             return getErrorAsXML("User not found");
         }
+
         DomRepresentation representation = new DomRepresentation(
                 MediaType.TEXT_XML);
-        // Generate a DOM document representing the item.
         Document d = representation.getDocument();
-
-        UserApiData userApiData = new UserApiData(this.user);
         Element apiElement = d.createElement(ApiResource.DOCUMENT_ELEMENT_NODE_NAME);
         d.appendChild(apiElement);
-        userApiData.appendUser(apiElement);
+
+        UserApiData userApiData = new UserApiData(this.user);
+        userApiData.append(apiElement);
 
         d.normalizeDocument();
         setStatus(Status.SUCCESS_OK);
@@ -93,16 +93,15 @@ public class UserResource extends ApiResource {
         String validationMessage = this.validateClientRequest();
         if (validationMessage != null) {
             setStatus(Status.valueOf(400));
-        }
-        if (this.user == null) {
+        } else if (this.user == null) {
             setStatus(Status.valueOf(404));
             setExisting(false);
+        } else {
+            UserManager.removeUser(this.user);
+
+            // Tells the client that the request has been successfully fulfilled.
+            setStatus(Status.SUCCESS_NO_CONTENT);
         }
-
-        UserManager.removeUser(this.user);
-
-        // Tells the client that the request has been successfully fulfilled.
-        setStatus(Status.SUCCESS_NO_CONTENT);
     }
 
     /**

@@ -29,7 +29,7 @@ public class UserQuestionApiData {
         return this.userQuestion.getAnswer();
     }
 
-    public void appendUserQuestion(Element element) {
+    public void append(Element element) {
         Document doc = element.getOwnerDocument();
         Element elmUQ = doc.createElement(NODE_NAME);
         element.appendChild(elmUQ);

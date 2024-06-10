@@ -46,7 +46,7 @@ public class UsersResource extends ApiResource {
         apiElement.appendChild(userListElement);
         for (User user : userList) {
             UserApiData data = new UserApiData(user);
-            data.appendUser(userListElement);
+            data.append(userListElement);
         }
 
         d.normalizeDocument();

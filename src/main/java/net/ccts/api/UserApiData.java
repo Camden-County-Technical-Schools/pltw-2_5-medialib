@@ -2,7 +2,6 @@ package net.ccts.api;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import net.ccts.data.User;
 import net.ccts.data.UserQuestion;
 import org.w3c.dom.Document;
@@ -35,7 +34,7 @@ public class UserApiData {
         return this.user.getLogin();
     }
 
-    @JsonSetter(PASSWORD_NODE)
+    @JsonGetter(PASSWORD_NODE)
     public char[] getPassword() {
         return this.user.getPassword();
     }
@@ -79,7 +78,7 @@ public class UserApiData {
         return userQuestionList;
     }
 
-    public void appendUser(Element element) {
+    public void append(Element element) {
         Document doc = element.getOwnerDocument();
         Element elmUser = doc.createElement(NODE_NAME);
         element.appendChild(elmUser);
@@ -118,7 +117,7 @@ public class UserApiData {
         if (this.getUserQuestionList() != null) {
             Element elmUQList = doc.createElement(USER_QUESTION_LIST_NODE);
             for (UserQuestionApiData userQuestion : this.getUserQuestionList()) {
-                userQuestion.appendUserQuestion(elmUQList);
+                userQuestion.append(elmUQList);
             }
         }
     }

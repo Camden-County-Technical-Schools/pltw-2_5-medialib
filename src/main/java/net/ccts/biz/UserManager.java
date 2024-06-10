@@ -3,13 +3,11 @@ package net.ccts.biz;
 import net.ccts.data.*;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserManager {
-    private static HashMap<String, User> userMap = new HashMap<>();
+    private static final HashMap<String, User> userMap = new HashMap<>();
     static {
         User tester = new User("0@test.com", new char[]{'t','e','s','t'}, "Test");
         tester.setLastName("User");
@@ -18,6 +16,8 @@ public class UserManager {
         tester.addUserQuestion(new UserQuestion(UserQuestion.getQuestionList().get(1), "2"));
         userMap.put(tester.getLogin(), tester);
     }
+
+    private static final ConcurrentHashMap<String, User> sessionMap = new ConcurrentHashMap<>();
 
     public static User registerUser(User u) {
         userMap.put(u.getLogin(), u);
@@ -53,5 +53,14 @@ public class UserManager {
         ArrayList<User> userList = new ArrayList<>(userMap.values());
         Collections.sort(userList);
         return userList;
+    }
+
+
+    public static User findUserBySession(String sessionId) {
+        return sessionMap.get(sessionId);
+    }
+
+    public static User removeSession(String sessionId) {
+        return sessionMap.remove(sessionId);
     }
 }
