@@ -13,8 +13,7 @@ public class RestApiApplication extends Application {
     public Restlet createInboundRoot() {
         // Create a router Restlet that defines routes.
         Router router = new Router(getContext());
-        // Defines routes for the resource "users"
-        // router.attach("/users", UsersResource.class);
+        router.attach("/users", UsersResource.class);
         router.attach("/users/{" + UserResource.USER_LOGIN_PARAM + "}", UserResource.class);
 
         return router;

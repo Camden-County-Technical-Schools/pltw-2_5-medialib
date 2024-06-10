@@ -25,10 +25,10 @@ public class UserResource extends ApiResource {
 
     @Override
     protected void doInit() throws ResourceException {
+        super.doInit();
         // Get the "login" attribute from the URI template /users/{login}
         this.login = (String) getRequest().getAttributes().get(USER_LOGIN_PARAM);
         this.user = UserManager.findUser(this.login);
-        setExisting(this.user != null);
     }
 
     private String validateClientRequest() {
@@ -36,8 +36,6 @@ public class UserResource extends ApiResource {
             return "Request invalid: no session token provided";
         if (this.login == null || this.login.isEmpty())
             return "Request invalid: " + USER_LOGIN_PARAM + " missing or empty";
-        if (this.user == null)
-            return "Request invalid: " + USER_LOGIN_PARAM + " " + this.login + " not found";
 
         return null;
     }
@@ -50,6 +48,10 @@ public class UserResource extends ApiResource {
             setStatus(Status.valueOf(400));
             return getErrorAsJSON(validationMessage);
         }
+        if (this.user == null) {
+            setStatus(Status.valueOf(404));
+            return getErrorAsJSON("User not found");
+        }
         UserApiData data = new UserApiData(this.user);
         setStatus(Status.valueOf(200));
         return new JacksonRepresentation<UserApiData>(data);
@@ -58,17 +60,25 @@ public class UserResource extends ApiResource {
     @Override
     @Get("xml")
     public Representation getXmlRepresentation() throws IOException {
+        String validationMessage = this.validateClientRequest();
+        if (validationMessage != null) {
+            setStatus(Status.valueOf(400));
+            return getErrorAsXML(validationMessage);
+        }
+        if (this.user == null) {
+            setStatus(Status.valueOf(404));
+            return getErrorAsXML("User not found");
+        }
         DomRepresentation representation = new DomRepresentation(
                 MediaType.TEXT_XML);
         // Generate a DOM document representing the item.
         Document d = representation.getDocument();
 
-        Element elmUser = d.createElement(UserApiData.NODE_NAME);
-        d.appendChild(elmUser);
-        Element elmLogin = d.createElement(UserApiData.LOGIN_NODE);
-        elmLogin.appendChild(d.createTextNode(this.user.getLogin()));
-        elmUser.appendChild(elmLogin);
-        //TODO support remaining fields
+        UserApiData userApiData = new UserApiData(this.user);
+        Element apiElement = d.createElement(ApiResource.DOCUMENT_ELEMENT_NODE_NAME);
+        d.appendChild(apiElement);
+        userApiData.appendUser(apiElement);
+
         d.normalizeDocument();
         setStatus(Status.SUCCESS_OK);
         // Returns the XML representation of this document.
@@ -80,10 +90,16 @@ public class UserResource extends ApiResource {
      */
     @Delete
     public void removeUser() {
-        if (this.user != null) {
-            // Remove the user from UserManager
-            UserManager.removeUser(this.user);
+        String validationMessage = this.validateClientRequest();
+        if (validationMessage != null) {
+            setStatus(Status.valueOf(400));
         }
+        if (this.user == null) {
+            setStatus(Status.valueOf(404));
+            setExisting(false);
+        }
+
+        UserManager.removeUser(this.user);
 
         // Tells the client that the request has been successfully fulfilled.
         setStatus(Status.SUCCESS_NO_CONTENT);
@@ -107,10 +123,16 @@ public class UserResource extends ApiResource {
         user.setFirstName(form.getFirstValue(UserApiData.FIRSTNAME_NODE));
         //TODO - set other fields
 
-        //TODO - wrap in try/catch
-        this.user = UserManager.registerUser(this.user);
+        try {
+            if (this.user.getRegistered() == null)
+                this.user = UserManager.registerUser(this.user);
+            else
+                this.user = UserManager.updateUser(this.user);
 
-        setStatus(Status.SUCCESS_OK);
+            setStatus(Status.SUCCESS_OK);
+        } catch (Exception e) {
+            setStatus(Status.SERVER_ERROR_INTERNAL);
+        }
     }
 
 }

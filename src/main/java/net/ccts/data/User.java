@@ -3,7 +3,7 @@ package net.ccts.data;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
-public class User {
+public class User implements Comparable<User>{
 
     private String login;
     private char[] password;
@@ -105,5 +105,22 @@ public class User {
     @Override
     public String toString() {
         return firstName + " - " + login;
+    }
+
+    @Override
+    public int compareTo(User other) {
+        String oLogin = null;
+        if (other != null)
+            oLogin = other.getLogin();
+
+        if (this.login == null) {
+            if (oLogin != null)
+                return -1;
+            return 0;
+        }
+        if (oLogin == null)
+            return 1;
+
+        return this.login.compareTo(oLogin);
     }
 }

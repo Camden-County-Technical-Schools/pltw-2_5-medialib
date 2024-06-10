@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public abstract class ApiResource extends ServerResource {
     public static final String SESSION_TOKEN = "X-Session-Token";
+    public static final String DOCUMENT_ELEMENT_NODE_NAME = "apiData";
 
     protected String sessionToken;
 

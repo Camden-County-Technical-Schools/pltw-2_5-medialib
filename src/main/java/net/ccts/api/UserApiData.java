@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import net.ccts.data.User;
 import net.ccts.data.UserQuestion;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 @JsonRootName(value = UserApiData.NODE_NAME)
 public class UserApiData {
     public static final String NODE_NAME = "user";
+    public static final String LIST_NAME = "users";
     public static final String LOGIN_NODE = "login";
     public static final String PASSWORD_NODE = "password";
     public static final String FIRSTNAME_NODE = "firstName";
@@ -74,6 +77,50 @@ public class UserApiData {
             userQuestionList.add(new UserQuestionApiData(userQuestion));
         }
         return userQuestionList;
+    }
+
+    public void appendUser(Element element) {
+        Document doc = element.getOwnerDocument();
+        Element elmUser = doc.createElement(NODE_NAME);
+        element.appendChild(elmUser);
+
+        Element elmLogin = doc.createElement(LOGIN_NODE);
+        elmLogin.appendChild(doc.createTextNode(this.getLogin()));
+        elmUser.appendChild(elmLogin);
+
+        Element elmFirstName = doc.createElement(FIRSTNAME_NODE);
+        elmFirstName.appendChild(doc.createTextNode(this.getFirstName()));
+        elmUser.appendChild(elmFirstName);
+
+        if (this.getLastName() != null) {
+            Element elmLastName = doc.createElement(LASTNAME_NODE);
+            elmLastName.appendChild(doc.createTextNode(this.getLastName()));
+            elmUser.appendChild(elmLastName);
+        }
+
+        if (this.getRegistered() != null) {
+            Element elmRegistered = doc.createElement(REGISTERED_NODE);
+            elmRegistered.appendChild(doc.createTextNode(this.getRegistered().toString()));
+            elmUser.appendChild(elmRegistered);
+        }
+
+        if (this.getLastLogin() != null) {
+            Element elmLL = doc.createElement(LAST_LOGIN_NODE);
+            elmLL.appendChild(doc.createTextNode(this.getLastLogin().toString()));
+            elmUser.appendChild(elmLL);
+        }
+
+
+        Element elmLFC = doc.createElement(LOGIN_FAILURE_COUNT_NODE);
+        elmLFC.appendChild(doc.createTextNode(String.valueOf(this.getLoginFailureCount())));
+        elmUser.appendChild(elmLFC);
+
+        if (this.getUserQuestionList() != null) {
+            Element elmUQList = doc.createElement(USER_QUESTION_LIST_NODE);
+            for (UserQuestionApiData userQuestion : this.getUserQuestionList()) {
+                userQuestion.appendUserQuestion(elmUQList);
+            }
+        }
     }
 
 }

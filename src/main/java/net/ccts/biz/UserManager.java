@@ -1,10 +1,23 @@
 package net.ccts.biz;
 
 import net.ccts.data.*;
+
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class UserManager {
     private static HashMap<String, User> userMap = new HashMap<>();
+    static {
+        User tester = new User("0@test.com", new char[]{'t','e','s','t'}, "Test");
+        tester.setLastName("User");
+        tester.setRegistered(ZonedDateTime.now());
+        tester.addUserQuestion(new UserQuestion(UserQuestion.getQuestionList().get(0), "1"));
+        tester.addUserQuestion(new UserQuestion(UserQuestion.getQuestionList().get(1), "2"));
+        userMap.put(tester.getLogin(), tester);
+    }
 
     public static User registerUser(User u) {
         userMap.put(u.getLogin(), u);
@@ -29,5 +42,16 @@ public class UserManager {
             return user;
         }
         return null;
+    }
+
+    public static User updateUser(User u) {
+        userMap.put(u.getLogin(), u);
+        return u;
+    }
+
+    public static List<User> getUserList() {
+        ArrayList<User> userList = new ArrayList<>(userMap.values());
+        Collections.sort(userList);
+        return userList;
     }
 }

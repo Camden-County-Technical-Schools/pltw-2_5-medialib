@@ -2,12 +2,9 @@ package net.ccts.api;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import net.ccts.data.User;
 import net.ccts.data.UserQuestion;
-
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 @JsonRootName(value = UserQuestionApiData.NODE_NAME)
 public class UserQuestionApiData {
@@ -32,4 +29,17 @@ public class UserQuestionApiData {
         return this.userQuestion.getAnswer();
     }
 
+    public void appendUserQuestion(Element element) {
+        Document doc = element.getOwnerDocument();
+        Element elmUQ = doc.createElement(NODE_NAME);
+        element.appendChild(elmUQ);
+
+        Element elmQ = doc.createElement(QUESTION_NODE);
+        elmQ.appendChild(doc.createTextNode(this.userQuestion.getQuestion()));
+        elmUQ.appendChild(elmQ);
+
+        Element elmA = doc.createElement(ANSWER_NODE);
+        elmA.appendChild(doc.createTextNode(this.userQuestion.getAnswer()));
+        elmUQ.appendChild(elmA);
+    }
 }
