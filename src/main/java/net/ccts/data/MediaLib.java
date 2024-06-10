@@ -1,5 +1,7 @@
 package net.ccts.data;
 
+import java.util.ArrayList;
+
 /**
  * Activity 2.5.7
  * 
@@ -7,8 +9,8 @@ package net.ccts.data;
  */
 public class MediaLib
 {
-  private Book[] books = new Book[10];
-  private Album[] albums = new Album[50];
+  private ArrayList<Book> books = new ArrayList<>(10);
+  private ArrayList<Album> albums = new ArrayList<>(50);
  
 // accessor methods 
   /**
@@ -17,8 +19,8 @@ public class MediaLib
    * @param index - locations of desired change
    */
   public Book fetchBook(int index) {
-    if (index < 0 || index >= this.books.length) throw new IllegalArgumentException("Index out of bounds.");
-    return this.books[index];
+    if (index < 0 || index >= this.books.size()) throw new IllegalArgumentException("Index out of bounds.");
+    return this.books.get(index);
   }
 
   /**
@@ -27,11 +29,46 @@ public class MediaLib
    * @param index - location of desired change
    */
   public Album fetchAlbum(int index) {
-    if (index < 0 || index >= this.albums.length) throw new IllegalArgumentException("Index out of bounds.");
-    return this.albums[index];
+    if (index < 0 || index >= this.albums.size()) throw new IllegalArgumentException("Index out of bounds.");
+    return this.albums.get(index);
   }
 
+  /**
+   * retrieve all media created that does not have a null value
+   * @return allMedia - an ArrayList with Book and Album objects inside
+   */
+  public ArrayList<Media> fetchAllMedia() {
+    ArrayList<Media> allMedia = new ArrayList<>();
+
+    for (Book b : books) {
+      if (b != null) allMedia.add(b);
+    }
+
+    for (Album a : albums) {
+      if (a != null) allMedia.add(a);
+    }
+
+    return allMedia;
+  }
+  
+
   // mutator methods
+
+  /**
+   * add a book to books list
+   * @param b - new book to add
+   */
+  public void addBook(Book b) {
+    this.books.add(b);
+  }
+
+  /**
+   * add an album to albums list
+   * @param a - new album to add
+   */
+  public void addAlbum(Album a) {
+    this.albums.add(a);
+  }
 
   /**
    * change the book value saved at index and changing it to the value saved at b
@@ -39,9 +76,12 @@ public class MediaLib
    * @param b - a book object containing a title and author
    */
   public void setBook(int index, Book b) {
-    if (index >= 0 && index < this.books.length) this.books[index] = b;
+    if (index >= 0 && index < this.books.size()) this.books.set(index, b);
+    else if (index == this.books.size()) this.books.add(b); 
     else throw new IllegalArgumentException("Index out of bounds.");
+    
   }
+
 
   /**
    * change the album value saved at index and changing it to the value saved at a
@@ -49,7 +89,8 @@ public class MediaLib
    * @param a - an album object containing a name and artist
    */
   public void setAlbum(int index, Album a) {
-    if (index >= 0 && index < this.albums.length) this.albums[index] = a;
+    if (index >= 0 && index < this.albums.size()) this.albums.set(index, a);
+    else if (index == this.albums.size()) this.albums.add(a); 
     else throw new IllegalArgumentException("Index out of bounds.");
   }
   
@@ -60,9 +101,9 @@ public class MediaLib
    */
   public Book removeBook(int index) {
     Book temp;
-    if (index >= 0 && index < this.books.length) {
-      temp = this.books[index]; 
-      this.books[index] = null;
+    if (index >= 0 && index < this.books.size()) {
+      temp = this.books.get(index); 
+      this.books.set(index, null);
     }
     else throw new IllegalArgumentException("Index out of bounds.");
     return temp;
@@ -76,9 +117,9 @@ public class MediaLib
    */
   public Album removeAlbum(int index) {
     Album temp;
-    if (index >= 0 && index < this.albums.length) {
-      temp = this.albums[index]; 
-      this.albums[index] = null;
+    if (index >= 0 && index < this.albums.size()) {
+      temp = this.albums.get(index); 
+      this.albums.set(index, null);
     } 
     else throw new IllegalArgumentException("Index out of bounds.");
     return temp;

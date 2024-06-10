@@ -2,11 +2,10 @@ package net.ccts.data;
 /**
  * an album is a collection or a single song that needs to have a title and an artist name
  * release date is optional
- * @author gitpod
+ * @author AkiotheChaoticPan
  */
-public class Album {
+public class Album extends Media{
 
-    private String name;
     private String artist;
 
     private int releaseYear;
@@ -18,9 +17,9 @@ public class Album {
      * @param n - name/title of the album
      * @param a - artist or creator of the album
      */
-    public Album(String n, String a) {
+    public Album(String i, String n, String a) {
         
-        name = n;
+        super(i, n);
         artist = a;
     }
 
@@ -31,7 +30,7 @@ public class Album {
      * @param n - name of the album
      */
     public void setName(String n) {
-        this.name = n;
+        super.setTitle(n);
     }
 
     /**
@@ -46,7 +45,7 @@ public class Album {
      * set the release year of the album with a year between 1800 and 9999
      * @param y - year the album was released
      */
-    public void setYear(int y) {
+    public void setReleaseYear(int y) {
         if (y >= 1800 && y <= 9999) this.releaseYear = y;
         else throw new IllegalArgumentException("Release year must be between 1800 and 9999, received " + y);
         
@@ -56,7 +55,7 @@ public class Album {
      * set the release month of the album with a motnh between 1 and 12
      * @param m - month the album was released
      */
-    public void setMonth(int m) {
+    public void setReleaseMonth(int m) {
         if (m >= 1 && m <= 12) this.releaseMonth = m;
         else throw new IllegalArgumentException("Release month must be between 1 and 12, received " + m);
     }
@@ -66,7 +65,7 @@ public class Album {
      * being a value inline with the amount of days per month
      * @param d - day the album was released
      */
-    public void setDay(int d) {
+    public void setReleaseDay(int d) {
         if (d >= 1 && d <= 31) {
             switch (this.releaseMonth) {
                 case 1: 
@@ -125,7 +124,7 @@ public class Album {
      * @return name of album
      */
     public String getName() {
-        return name;
+        return super.getTitle();
     }
 
     /**
@@ -140,7 +139,7 @@ public class Album {
      * retrieve the release year set in constructor, or changed by set method
      * @return release year of album
      */
-    public int getYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
@@ -148,7 +147,7 @@ public class Album {
      * retrieve the release month set in constructor, or changed by set method
      * @return release month of album
      */
-    public int getMonth() {
+    public int getReleaseMonth() {
         return releaseMonth;
     }
 
@@ -156,19 +155,28 @@ public class Album {
      * retrieve the release day set in constructor, or changed by set method
      * @return release day of album
      */
-    public int getDay() {
+    public int getReleaseDay() {
         return releaseDay;
     }
+
+    /**
+     * retrieve the id set in constructor, or changed by set method
+     * @return id of album
+     */
+    public String getId() {
+        return super.getID();
+    }
+    
 
     // additional mmethods
 
     /**
-     * changes the format of the final recieved album
+     * changes the format of the final outputted album
      * @return the title, artist, and release date of the album
      */
     @Override
     public String toString() {
-        String a = "Title: " + name + " | Artist: " + artist + " | Release Date(YYYY/MM/DD): " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
+        String a = super.getTitle() + " - Release: " + releaseYear + "-" + releaseMonth + "-" + releaseDay;
         return a;
     }
     

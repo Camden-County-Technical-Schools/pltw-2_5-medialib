@@ -5,22 +5,27 @@ package net.ccts.data;
  *
  * A books class for the MediaLibrary program
  */
-public class Book {
-  private String title;
+public class Book extends Media {
   private String author;
   private int rating;
   
   /*** Constructor ****/
-  public Book(String t, String a)
+  
+  public Book(String i, String t, String a)
   {
-    title = t;
+    super(i, t);
     author = a;
     rating = 0;
   }
   
    /*** Accessor methods ***/
-  public String getTitle() {
-    return title;
+
+  /**
+   * retrieve the id set in constructor, or changed by set method
+   * @return id of album
+    */
+  public String getId() {
+    return super.getID();
   }
 
   public String getAuthor() {
@@ -34,7 +39,7 @@ public class Book {
   @Override
   public String toString() 
   {
-    String info = "\"" + title + "\", written by " + author;
+    String info = "\"" + super.getTitle() + "\", written by " + author;
     if (rating != 0) 
     { 
       info += ", rating is " + rating;
@@ -43,8 +48,9 @@ public class Book {
   }
 
   /*** Mutator methods ***/
+  @Override
   public void setTitle(String t) {
-    title = t;
+    super.setTitle(t);
   }
 
   public void setAuthor(String a) {
@@ -59,6 +65,6 @@ public class Book {
 
   public boolean equals(Book b) {
 
-    return this.title.equals(b.title) && this.author.equals(b.author);
+    return super.getTitle().equals(b.getTitle()) && this.author.equals(b.author);
   }
 }

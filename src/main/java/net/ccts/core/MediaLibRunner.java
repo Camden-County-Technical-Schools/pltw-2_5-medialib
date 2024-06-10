@@ -15,8 +15,8 @@ public class MediaLibRunner
     
     MediaLib myLib = new MediaLib();
     MediaLib myLib2 = new MediaLib();
-    Book newbooks = new Book("To Kill a Mockingbird", "Lee");
-    Book mybooks = new Book("The Lord of the Rings", "Tolkien");
+    Book newbooks = new Book("9780060173227", "To Kill a Mockingbird", "Lee");
+    Book mybooks = new Book("9788845270741", "The Lord of the Rings", "Tolkien");
 
     int myRating = 2;
 
