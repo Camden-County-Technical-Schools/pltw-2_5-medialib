@@ -2,7 +2,7 @@ package net.ccts.data;
 
 
 
-public class Media {
+public abstract class Media {
 
     protected String id;
     protected String title;

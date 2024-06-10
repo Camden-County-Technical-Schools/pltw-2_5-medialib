@@ -35,10 +35,11 @@ public class UserManager{
 
         if (u.getUserQuestionList().size() < 2){
             throw new IllegalArgumentException("The User should have at least two questions");
-        } else {
-            u.setRegistered(ZonedDateTime.now());
-            userMap.put(u.getLogin(), u);
-        }
+        } 
+    
+        u.setRegistered(ZonedDateTime.now());
+        userMap.put(u.getLogin(), u);
+    
 
         return u;
 
@@ -63,7 +64,7 @@ public class UserManager{
 
 
     public static User findUser(String login){
-        if (login == null || login == " "){
+        if (login == null || login == ""){
             return null;
 
         }
