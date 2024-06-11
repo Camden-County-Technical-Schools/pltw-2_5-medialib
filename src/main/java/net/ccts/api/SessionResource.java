@@ -1,10 +1,9 @@
 package net.ccts.api;
 
+import net.ccts.biz.SessionManager;
 import net.ccts.biz.UserManager;
 import net.ccts.data.User;
-import org.restlet.data.Form;
 import org.restlet.data.MediaType;
-import org.restlet.data.Parameter;
 import org.restlet.data.Status;
 import org.restlet.ext.jackson.JacksonRepresentation;
 import org.restlet.ext.xml.DomRepresentation;
@@ -14,25 +13,39 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class SessionResource extends ApiResource {
+    public static final String SESSION_ID_PARAM = "sessionId";
+
     private String sessionId;
 
     @Override
     protected void doInit() throws ResourceException {
         super.doInit();
-        this.sessionId = (String) getRequest().getAttributes().get(SessionApiData.SESSION_ID_NODE);
+        this.sessionId = (String) getRequest().getAttributes().get(SESSION_ID_PARAM);
+    }
+
+    private String validateClientRequest() {
+        if (!super.validateSessionToken())
+            return "Request invalid: no valid session token provided";
+
+        return null;
     }
 
     @Override
     @Get("json")
     public Representation getJsonRepresentation() {
+        String validationMessage = this.validateClientRequest();
+        if (validationMessage != null) {
+            setStatus(Status.valueOf(400));
+            return getErrorAsJSON(validationMessage);
+        }
+
         if (this.sessionId == null || this.sessionId.isEmpty()) {
             setStatus(Status.valueOf(400));
             return getErrorAsJSON("Session ID is required");
         }
-        User bySession = UserManager.findUserBySession(this.sessionId);
+        User bySession = SessionManager.findUserBySession(this.sessionId);
         if (bySession == null) {
             setStatus(Status.valueOf(404));
             return getErrorAsJSON("No session found");
@@ -45,14 +58,20 @@ public class SessionResource extends ApiResource {
     @Override
     @Get("xml")
     public Representation getXmlRepresentation() throws IOException {
+        String validationMessage = this.validateClientRequest();
+        if (validationMessage != null) {
+            setStatus(Status.valueOf(400));
+            return getErrorAsXML(validationMessage);
+        }
+
         if (this.sessionId == null || this.sessionId.isEmpty()) {
             setStatus(Status.valueOf(400));
-            return getErrorAsJSON("Session ID is required");
+            return getErrorAsXML("Session ID is required");
         }
-        User bySession = UserManager.findUserBySession(this.sessionId);
+        User bySession = SessionManager.findUserBySession(this.sessionId);
         if (bySession == null) {
             setStatus(Status.valueOf(404));
-            return getErrorAsJSON("No session found");
+            return getErrorAsXML("No session found");
         }
 
         DomRepresentation representation = new DomRepresentation(
@@ -75,56 +94,38 @@ public class SessionResource extends ApiResource {
      */
     @Delete
     public void removeSession() {
+        String validationMessage = this.validateClientRequest();
+        if (validationMessage != null) {
+            setStatus(Status.valueOf(400));
+        }
         if (this.sessionId == null || this.sessionId.isEmpty()) {
             setStatus(Status.valueOf(400));
         } else {
-            UserManager.removeSession(this.sessionId);
+            SessionManager.removeSession(this.sessionId);
             setStatus(Status.SUCCESS_NO_CONTENT);
         }
     }
 
-    @Post
-    public Representation loginJson(Representation entity) throws IOException {
-        User user = this.handleLogin(entity);
-        if (user == null) {
-            setStatus(Status.valueOf(400));
-            return getErrorAsJSON("Login failed");
-        } else {
-            SessionApiData sessionData = new SessionApiData(user);
-            setStatus(Status.valueOf(200));
-            return new JacksonRepresentation<SessionApiData>(sessionData);
+    @Post("json")
+    public Representation loginJson(Representation entity) {
+        try {
+            JacksonRepresentation<LoginApiData> jackson = new JacksonRepresentation<>(entity, LoginApiData.class);
+            LoginApiData loginApiData = jackson.getObject();
+
+            User user = UserManager.handleLogin(loginApiData.getUsername(), loginApiData.getPassword());
+            if (user == null) {
+                setStatus(Status.valueOf(400));
+                return getErrorAsJSON("Login failed");
+            } else {
+                SessionApiData sessionData = SessionManager.createSession(user);
+                setStatus(Status.valueOf(200));
+                return new JacksonRepresentation<SessionApiData>(sessionData);
+            }
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+            setStatus(Status.valueOf(500));
+            return getErrorAsJSON(e.getMessage());
         }
-    }
-
-    @Post("xml")
-    public Representation loginXml(Representation entity) throws IOException {
-        User user = this.handleLogin(entity);
-        if (user == null) {
-            setStatus(Status.valueOf(400));
-            return getErrorAsXML("Login failed");
-        } else {
-            DomRepresentation representation = new DomRepresentation(
-                    MediaType.TEXT_XML);
-            Document d = representation.getDocument();
-            Element apiElement = d.createElement(ApiResource.DOCUMENT_ELEMENT_NODE_NAME);
-            d.appendChild(apiElement);
-
-            SessionApiData sessionData = new SessionApiData(user);
-            sessionData.append(apiElement);
-
-            d.normalizeDocument();
-
-            setStatus(Status.valueOf(200));
-            return new JacksonRepresentation<SessionApiData>(sessionData);
-        }
-    }
-
-    private User handleLogin(Representation entity) {
-        Form form = new Form(entity);
-        String login = form.getFirstValue(SessionApiData.LOGIN_NODE);
-        char[] password = form.getFirstValue(SessionApiData.PASSWORD_NODE, true, "").toCharArray();
-
-        return UserManager.handleLogin(login, password);
     }
 
 }

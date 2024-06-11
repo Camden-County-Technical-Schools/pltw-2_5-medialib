@@ -1,5 +1,6 @@
 package net.ccts.api;
 
+import net.ccts.biz.SessionManager;
 import org.restlet.data.Cookie;
 import org.restlet.data.Header;
 import org.restlet.data.MediaType;
@@ -28,6 +29,11 @@ public abstract class ApiResource extends ServerResource {
     protected void doInit() throws ResourceException {
         super.doInit();
         this.sessionToken = findSessionToken();
+    }
+
+    public boolean validateSessionToken() {
+        return this.sessionToken != null
+                && SessionManager.findUserBySession(this.sessionToken) != null;
     }
 
     public String findSessionToken() {

@@ -17,38 +17,24 @@ import java.util.UUID;
 public class SessionApiData {
     public static final String NODE_NAME = "session";
     public static final String LOGIN_NODE = "login";
-    public static final String PASSWORD_NODE = "password";
     public static final String SESSION_ID_NODE = "sessionId";
 
     private String login;
-    private char[] password;
     private String sessionId;
-
-    public SessionApiData(String login, char[] password) {
-        this.login = login;
-        this.password = password;
-    }
 
     public SessionApiData(User u, String sessionId) {
         this.login = u.getLogin();
-        this.password = u.getPassword();
         this.sessionId = sessionId;
     }
 
     public SessionApiData(User u) {
         this.login = u.getLogin();
-        this.password = u.getPassword();
         this.sessionId = UUID.randomUUID().toString();
     }
 
     @JsonGetter(LOGIN_NODE)
     public String getLogin() {
         return this.login;
-    }
-
-    @JsonIgnore
-    public char[] getPassword() {
-        return this.password;
     }
 
     @JsonGetter(SESSION_ID_NODE)

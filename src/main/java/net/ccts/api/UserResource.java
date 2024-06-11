@@ -32,8 +32,8 @@ public class UserResource extends ApiResource {
     }
 
     private String validateClientRequest() {
-        if (sessionToken == null || sessionToken.isEmpty())
-            return "Request invalid: no session token provided";
+        if (validateSessionToken())
+            return "Request invalid: no valid session token provided";
         if (this.login == null || this.login.isEmpty())
             return "Request invalid: " + USER_LOGIN_PARAM + " missing or empty";
 

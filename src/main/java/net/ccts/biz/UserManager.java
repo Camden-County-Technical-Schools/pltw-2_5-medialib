@@ -17,14 +17,17 @@ public class UserManager {
         userMap.put(tester.getLogin(), tester);
     }
 
-    private static final ConcurrentHashMap<String, User> sessionMap = new ConcurrentHashMap<>();
-
     public static User registerUser(User u) {
         userMap.put(u.getLogin(), u);
         return u;
     }
 
     public static User handleLogin(String login, char[] password) {
+        //TODO - validate password for login
+        User user = findUser(login);
+        if (user != null) {
+
+        }
         return findUser(login);
     }
 
@@ -55,12 +58,4 @@ public class UserManager {
         return userList;
     }
 
-
-    public static User findUserBySession(String sessionId) {
-        return sessionMap.get(sessionId);
-    }
-
-    public static User removeSession(String sessionId) {
-        return sessionMap.remove(sessionId);
-    }
 }

@@ -16,6 +16,7 @@ public class RestApiApplication extends Application {
         router.attach("/users", UsersResource.class);
         router.attach("/users/{" + UserResource.USER_LOGIN_PARAM + "}", UserResource.class);
         router.attach("/login", SessionResource.class);
+        router.attach("/session/{" + SessionResource.SESSION_ID_PARAM + "}", SessionResource.class);
         return router;
     }
 
