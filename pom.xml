@@ -9,6 +9,7 @@
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <restlet-version>2.4.3</restlet-version>
   </properties>
  
   <build>
@@ -26,16 +27,45 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.restlet.jse</groupId>
+      <artifactId>org.restlet</artifactId>
+      <version>${restlet-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jse</groupId>
+      <artifactId>org.restlet.ext.jackson</artifactId>
+      <version>${restlet-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jse</groupId>
+      <artifactId>org.restlet.ext.xml</artifactId>
+      <version>${restlet-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.servlet</artifactId>
+      <version>${restlet-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jse</groupId>
+      <artifactId>org.restlet.ext.jetty</artifactId>
+      <version>${restlet-version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
-    <!-- Spring Boot Starter -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>5.1.9.RELEASE</version>
-    </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>maven-restlet</id>
+      <name>Restlet repository</name>
+      <url>https://maven.restlet.talend.com</url>
+    </repository>
+  </repositories>
+
 </project>

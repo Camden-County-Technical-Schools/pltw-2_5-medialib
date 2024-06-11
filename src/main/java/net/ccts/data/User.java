@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * using implementations from the UserQuestion class
  * @author AkiotheChaoticPan
  */
-public class User {
+public class User implements Comparable<User>{
     
     private ZonedDateTime registered;
     private ZonedDateTime lastLogin;
@@ -205,5 +205,22 @@ public class User {
      */
     public void setLoginFailureCount(int fail) {
         this.loginFailureCount = fail;
+    }
+
+    @Override
+    public int compareTo(User other) {
+        String oLogin = null;
+        if (other != null)
+            oLogin = other.getLogin();
+
+        if (this.login == null) {
+            if (oLogin != null)
+                return -1;
+            return 0;
+        }
+        if (oLogin == null)
+            return 1;
+
+        return this.login.compareTo(oLogin);
     }
 }
