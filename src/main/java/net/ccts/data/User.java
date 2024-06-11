@@ -14,12 +14,10 @@ public class User{
     private int loginFailureCount;
     private ArrayList<UserQuestion> userQuestionList;
 
-    public User(String login, char[] password, String firstName, String lastName) {
+    public User(String login, char[] password, String firstName) {
         setLogin(login);
         setPassword(password);
         setFirstName(firstName);
-        this.lastName = lastName;
-        this.registered = ZonedDateTime.now();
         this.lastLogin = null;
         this.loginFailureCount = 0;
         this.userQuestionList = new ArrayList<>(3);
@@ -43,7 +41,7 @@ public class User{
     }
 
     public void setPassword(char[] password){
-        if (password == null || password.length == 0) throw new IllegalArgumentException("Password is required");
+        if (password == null || password.length == 0 || password[0] == ' ') throw new IllegalArgumentException("Password is required");
         this.password = password;
     }
     public String getFirstName(){
@@ -53,6 +51,12 @@ public class User{
         if (firstName == null || firstName.isEmpty()) 
         {throw new IllegalArgumentException("First name is required");}
         this.firstName = firstName;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
     public void addUserQuestion(UserQuestion q) {
         userQuestionList.add(q);
@@ -74,6 +78,14 @@ public class User{
 
     public ArrayList<UserQuestion> getUserQuestionList() {
         return userQuestionList;
+    }
+
+    public int getLoginFailureCount(){
+        return loginFailureCount;
+    }
+
+    public void setLoginFailureCount(int loginFailureCount){
+        this.loginFailureCount = loginFailureCount;
     }
 
     // toString method override
