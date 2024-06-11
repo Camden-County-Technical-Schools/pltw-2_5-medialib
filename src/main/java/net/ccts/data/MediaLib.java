@@ -18,35 +18,35 @@ public class MediaLib {
     }
 
     public Album fetchAlbum(int index) {
-        if (index < 0 || index >= albums.length()) {
+        if (index < 0 || index >= albums.size()) {
             throw new IllegalArgumentException("Index is out of bounds");
         }
         return this.albums.get(index);
     }
 
     public void setBook(int index, Book b) {
-        if (index < 0 || index >= books.length()) {
+        if (index < 0 || index >= books.size()) {
             throw new IllegalArgumentException("Index is out of bounds");
         }
         this.books.set(index, b);
     }
 
     public void setAlbum(int index, Album a) {
-        if (index < 0 || index >= albums.length()) {
+        if (index < 0 || index >= albums.size()) {
             throw new IllegalArgumentException("Index is out of bounds");
         }
         this.albums.set(index, a);
     }
 
     public Book removeBook(int index) {
-        if (index < 0 || index >= books.length()) {
+        if (index < 0 || index >= books.size()) {
             throw new IllegalArgumentException("Index is out of bounds");
         }
         return this.books.remove(index);
     }
 
     public Album removeAlbum(int index) {
-        if (index < 0 || index >= albums.length()) {
+        if (index < 0 || index >= albums.size()) {
             throw new IllegalArgumentException("Index is out of bounds");
         }
         return this.albums.remove(index);

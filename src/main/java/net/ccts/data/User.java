@@ -24,7 +24,10 @@ public class User {
     }
 
     public void setLogin(String login) {
-        this.login = login;
+         if (login == null || login.isEmpty())
+            throw new IllegalArgumentException("login is null or empty string");
+        else
+            this.login = login.toLowerCase();
     }
 
     public char[] getPassword() {
@@ -32,6 +35,8 @@ public class User {
     }
 
     public void setPassword(char[] password) { 
+        if (password == null || password.length == 0 || password[0] == ' ')
+        throw new IllegalArgumentException("Passowrd is required");
         this.password = password;
     }
 
@@ -40,7 +45,10 @@ public class User {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        if (firstName == null || firstName.isEmpty())
+            throw new IllegalArgumentException("first name is null or empty string");
+        else
+            this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -92,6 +100,6 @@ public class User {
     }
 
     public String toString() {
-        return firstName + "-" + login;
+        return firstName + " - " + login;
     }
 }
