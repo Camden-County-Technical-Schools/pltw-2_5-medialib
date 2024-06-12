@@ -1,7 +1,8 @@
-package net.ccts.data;
+package net.ccts.biz;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Arrays;
+import net.ccts.data.*;
 
 public class UserManager {
     private static HashMap<String, User> userMap = new HashMap<>();
