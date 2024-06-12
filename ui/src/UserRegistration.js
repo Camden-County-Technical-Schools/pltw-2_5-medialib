@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 function User({
   login,
@@ -51,12 +51,6 @@ function User({
         />
       </div>
       <div>
-        <label htmlFor="user-question">User Question </label>
-        <select>
-          <option></option>
-        </select>
-      </div>
-      <div>
         <label htmlFor="password">Password </label>
         <input
           type="password"
@@ -88,12 +82,11 @@ function UserRegistration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-
+    
     const user = {
       login,
       firstName,
@@ -113,12 +106,14 @@ function UserRegistration() {
 
       if (response.ok) {
         console.log('User registered successfully');
+        
       } else {
         console.error('Failed to register user');
       }
     } catch (error) {
       console.error('Error:', error);
     }
+    
   };
 
   return (
@@ -152,6 +147,12 @@ function UserRegistration() {
           <input type="checkbox" checked={showPass} onChange={passVis} /> Show Password?
         </div>
         {error && <p class="Error">{error}</p>}
+        <div>
+          <label htmlFor="user-question">User Question </label>
+          <select>
+            <option></option>
+          </select>
+        </div>
         <p>
           Have an account? <Link to="/" className="Link">Login now!</Link>
         </p>
