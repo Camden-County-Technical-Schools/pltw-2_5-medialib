@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Login from '/workspace/pltw-2_5-medialib/ui/src/Login.js';
+import Login from 'Login';
 
 test('renders app page', () => {
   render(
