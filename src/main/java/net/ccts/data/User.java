@@ -14,12 +14,10 @@ public class User {
     private int loginFailureCount;
     private ArrayList<UserQuestion> userQuestionList;
 
-    public User(String login, char[] password, String firstName, String lastName) {
+    public User(String login, char[] password, String firstName) {
         this.setLogin(login);
         this.setPassword(password);
         this.setFirstName(firstName);
-        this.lastName = lastName;
-        this.registered = ZonedDateTime.now();
         this.lastLogin = null;
         this.loginFailureCount = 0;
         this.userQuestionList = new ArrayList<>(3);
@@ -41,7 +39,7 @@ public class User {
     }
 
     public void setPassword(char[] password) {
-        if (password == null || password.length == 0) {
+        if (password == null || password.length == 0 || password[0] == ' ' ){
             throw new IllegalArgumentException("Password is required");
         }
         this.password = password;
@@ -62,20 +60,35 @@ public class User {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        if (lastName == null || lastName.isEmpty()) {
+            throw new IllegalArgumentException("Last name is required");
+        }
+        this.lastName = lastName;
+    }
+
     public ZonedDateTime getRegistered() {
         return registered;
     }
 
-    public void setRegistered(ZonedDateTime r){
-        this.registered = r;
+    public void setRegistered(ZonedDateTime registered) {
+        this.registered = registered;
     }
 
     public ZonedDateTime getLastLogin() {
         return lastLogin;
     }
 
+    public void setLastLogin(ZonedDateTime lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
     public int getLoginFailureCount() {
         return loginFailureCount;
+    }
+
+    public void setLoginFailureCount(int loginFailureCount) {
+        this.loginFailureCount = loginFailureCount;
     }
 
     public void addUserQuestion(UserQuestion q) {

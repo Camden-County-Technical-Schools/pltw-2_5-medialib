@@ -1,42 +1,26 @@
 package net.ccts.data;
 
 public class Book extends Media{
-  private String title;
-  private String author;
-  private int rating;
-  
-  /*** Constructor ****/
-  public Book(String title, String author, String id) {
-    super(id, title);
-    this.author = author;
-    this.rating = 0;
-  }
-  
-  public String getAuthor() {
-    return author;
-  }
-  
-  public int getRating() {
-    return rating;
-  }
-  
-  @Override
-  public String toString() {
-    String info = "\"" + getTitle() + "\", written by " + author;
-    if (rating != 0) {
-      info += ", rating is " + rating;
+    private String author;
+
+    public Book(String ID, String title, String author) {
+        super(ID, title);
+        this.author = author;
     }
-    return info;
-  }
 
-  /*** Mutator methods ***/
-  public void setTitle(String t) {
-    title = t;
-  }
+    public String getTitle() {
+        return super.title;
+    }
 
-  public void setAuthor(String a) {
-    author = a;
-  }
+    public void setTitle(String title) {
+        super.title = title;
+    }
 
-  
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }
