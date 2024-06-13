@@ -15,7 +15,7 @@ public class Album extends Media {
         this.artist = artist;
     }
 
-    public String getTitle() {
+    public String getName() {
         return this.title;
     }
 
@@ -35,7 +35,7 @@ public class Album extends Media {
         return releaseDay;
     }
 
-    public void setTitle(String name) {
+    public void setName(String name) {
         this.title = name;
     }
 

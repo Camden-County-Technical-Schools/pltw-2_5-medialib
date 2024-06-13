@@ -17,12 +17,10 @@ public class User {
     private ArrayList<UserQuestion> userQuestionList = new ArrayList<>(3);
 
     // Constructor for the required member variables
-    public User(String login, char[] password, String firstName, String lastName) {
+    public User(String login, char[] password, String firstName) {
         setLogin(login);
         setPassword(password);
         setFirstName(firstName);
-        this.lastName = lastName;
-        this.registered = ZonedDateTime.now();
         this.lastLogin = null;
         this.loginFailureCount = 0;
     }
