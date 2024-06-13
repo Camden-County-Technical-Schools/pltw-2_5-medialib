@@ -7,8 +7,8 @@ package net.ccts.data;
  */
 public class MediaLib {
   
-  private Book[] books = new Book[10];
-  private Album[] albums = new Album[50];
+  private ArrayList<Book> books = new Book[10];
+  private ArrayList<Album> albums = new Album[50];
 
   /** 
    * @param is the index that is used
@@ -27,6 +27,10 @@ public class MediaLib {
     }
   return albums[index];
   }  
+  public media fetchMedia(int index){
+    ArrayList<media> += ArrayList<Album> +ArrayList<Book>;
+    return ArrayList<media>;
+  }
    /** 
    * @param is the index that is used
    * @return returns the position of index in albums
