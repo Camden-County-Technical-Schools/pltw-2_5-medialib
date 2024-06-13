@@ -4,25 +4,19 @@ package net.ccts.data;
  * album such as name and the artists
  * and the release times
  */
-public class Album {
-    private String name; 
+public class Album extends Media {
+    // private String name; 
     private String artist;
 
     private int releaseYear; 
     private int releaseMonth;
     private int releaseDay;
 
-    public Album(String n, String a) {
-        this.name = n; 
-        this.artist = a;
+    public Album(String id, String title, String artist) {
+        super(id, title); 
+        this.artist = artist; 
     }
 
-    public String getName() {
-        return this.name;
-    }
-    public String getArtist() {
-        return this.artist; 
-    }
 
     public int getReleaseYear() {
         return this.releaseYear;
@@ -34,11 +28,17 @@ public class Album {
     public int getReleaseDay() {
         return this.releaseDay; 
     }
-
-    public void setName(String n) {
-        this.name = n; 
+    public String getName() {
+        return super.getTitle();
     }
 
+    public void setName(String n) {
+        super.setTitle(n); 
+    }
+
+    public String getArtist() {
+        return this.artist; 
+    }
     public void setArtist(String a) {
         this.artist = a; 
     }
@@ -72,7 +72,7 @@ public class Album {
 
     @Override 
     public String toString() {
-        return this.name + " Release:" + this.releaseYear + "-" + this.releaseMonth + "-" +
+        return super.getTitle() + " - Release: " + this.releaseYear + "-" + this.releaseMonth + "-" +
         this.releaseDay; 
     }
 

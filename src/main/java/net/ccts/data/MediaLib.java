@@ -1,86 +1,144 @@
 package net.ccts.data;
 
+import java.util.ArrayList;
+
 /**
  * Activity 2.5.7
  * 
- * A MediaLib class for the MediaLibrary program
+ * manages a collection of books and albums.
  */
 public class MediaLib {
-  
-  private Book[] books = new Book[10];
-  private Album[] albums = new Album[50];
+
+  private ArrayList<Book> books = new ArrayList<>(10);
+  private ArrayList<Album> albums = new ArrayList<>(50);
+
   /**
+   * Fetches the book at the specified index.
    * 
-   * @param is an int index of books which would be through 10 
-   * @return index of books 
+   * @param index an int index of the book to fetch
+   * @return the book at the specified index
+   * @throws IllegalArgumentException if the index is out of bounds
    */
-  public Book fetchBook (int index) {
-    if (index < 0 || index >= books.length) {
-      throw new IllegalArgumentException(
-        "Index is out of bounds"); 
+  public Book fetchBook(int index) {
+    if (index < 0 || index >= books.size()) {
+      throw new IllegalArgumentException("Index is out of bounds");
     }
-    return books[index]; 
+    return books.get(index);
   }
 
-  public Album fetchAlbum(int index) {
-    if (index <0 || index >= albums.length) {
-      throw new IllegalArgumentException(
-        "Index is out of bounds.");
+  /**
+   * Fetches the album at the specified index.
+   * 
+   * @param index an int index of the album to fetch
+   * @return the album at the specified index
+   * @throws IllegalArgumentException if the index is out of bounds
+   */
+public Album fetchAlbum(int index) {
+    if (index < 0 || index >= albums.size()) {
+      throw new IllegalArgumentException("Index is out of bounds.");
     }
-    return albums[index];
+    return albums.get(index);
   }
 
+  /**
+   * Sets the book at the specified index.
+   * 
+   * @param index an int index where the book will be set
+   * @param b the book to set at the specified index
+   * @throws IllegalArgumentException if the index is out of bounds
+   */
   public void setBook(int index, Book b) {
-    if (index < 0 || index >= books.length) {
-      throw new IllegalArgumentException(
-        "Index is out of bounds.");
+    if (index < 0 || index >= books.size()) {
+      throw new IllegalArgumentException("Index is out of bounds.");
     }
-    this.books[index] = b; 
+    books.set(index, b);
   }
 
+  /**
+   * Sets the album at the specified index.
+   * 
+   * @param index an int index where the album will be set
+   * @param a the album to set at the specified index
+   * @throws IllegalArgumentException if the index is out of bounds
+   */
   public void setAlbum(int index, Album a) {
-    if (index < 0 || index >= albums.length) {
-      throw new IllegalArgumentException(
-        "Index is out of bounds.");
+    if (index < 0 || index >= albums.size()) {
+      throw new IllegalArgumentException("Index is out of bounds.");
     }
-    this.albums[index] = a; 
+    albums.set(index, a);
   }
 
-/**
- * mutator method
- * make temp book value to store at specified index 
- * set element at index to null and 
- * return temp value 
- */
+  /**
+   * Removes the book at the specified index.
+   * 
+   * @param index an int index of the book to remove
+   * @return the removed book
+   * @throws IllegalArgumentException if the index is out of bounds
+   */
   public Book removeBook(int index) {
-    if (index < 0 || index >= this.books.length) {
-      throw new IllegalArgumentException(
-        "Index is out of bounds.");
-    }
-    Book tmp = this.books[index];
-    this.books[index] = null;
-    return tmp; 
+      if (index < 0 || index >= books.size()) {
+        throw new IllegalArgumentException("Index is out of bounds.");
+      }
+      return books.remove(index);
   }
-/**
- * mutator method 
- * make temp book value to store at specified index 
- * set element at index to null and 
- * return temp value 
- */
+
+  /**
+   * Removes the album at the specified index.
+   * 
+   * @param index = int index of the album to get rid of 
+   * @return the removed album
+   * @throws IllegalArgumentException if ind isnt in bounds 
+   */
   public Album removeAlbum(int index) {
-
-    if (index < 0 || index >= this.albums.length) {
-      throw new IllegalArgumentException(
-        "Index is out of bounds.");
+    if (index < 0 || index >= albums.size()) {
+      throw new IllegalArgumentException("Index is out of bounds.");
     }
-    Album tmp = this.albums[index];
-    this.albums[index] = null;
-    return tmp; 
-    }
-
-  public String toString() {
-    String info = "";
-    return info;
+    return albums.remove(index);
   }
 
+  /**
+   * Fetches all non-null media items from books and albums lists.
+   * 
+   * @return a combined ArrayList of non-null books and albums
+   */
+  public ArrayList<Media> fetchAllMedia() {
+    ArrayList<Media> allMedia = new ArrayList<>();
+    for (Book book : books) {
+      if (book != null) {
+        allMedia.add(book);
+      }
+    }
+    for (Album album : albums) {
+      if (album != null) {
+        allMedia.add(album);
+      }
+    }
+    return allMedia;
+  }
+
+  /**
+   * Adds a book to the MediaLib's book list.
+   * 
+   * @param b the book to add
+   */
+  public void addBook(Book b) {
+    books.add(b);
+  }
+
+  /**
+   * Adds an album to the MediaLib's album list.
+   * 
+   * @param a the album to add
+   */
+  public void addAlbum(Album a) {
+    albums.add(a);
+  }
+
+  @Override
+  public String toString() {
+  return "MediaLib{" +
+    "books=" + books +
+    ", albums=" + albums +
+    '}';
+  }
 }

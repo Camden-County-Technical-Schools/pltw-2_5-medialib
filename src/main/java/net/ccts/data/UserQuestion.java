@@ -61,9 +61,9 @@ public class UserQuestion {
  */
     @Override 
     public String toString() {
-        String info = "Q";
-        info = info + question; 
-        info = info + "A";
+        String info = "Q: ";
+        info = info + question;
+        info = info + " - A: ";
         info = info + answer;
         return info;  
     }
