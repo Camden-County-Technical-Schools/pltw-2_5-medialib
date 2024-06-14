@@ -13,6 +13,5 @@ public class MediaLibRunner
   {
     System.out.println("Welcome to your Media Library");
     MediaLib myLib = new MediaLib();
-
   }
 }

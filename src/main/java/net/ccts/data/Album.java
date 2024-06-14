@@ -1,7 +1,7 @@
 package net.ccts.data;
 
 /*The album class is supposed to be used to find the name of a song, the artist and the release date*/
-public class Album {
+public class Album extends Media {
 
   private String name;
   private String artist; 
@@ -9,9 +9,11 @@ public class Album {
   private int releaseMonth;
   private int releaseDay; 
 
-  public Album(String n, String a){
+  public Album(String n, String a, String id){
+    super(id, n);
     this.name = n;
     this.artist = a;
+    this.id = id;
   }
 public String getName(){
   return this.name;
