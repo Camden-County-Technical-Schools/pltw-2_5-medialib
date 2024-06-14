@@ -19,12 +19,10 @@ public class User {
     private ArrayList<UserQuestion> userQuestionList;
 
     // Constructor
-    public User(String login, char[] password, String firstName, String lastName) {
+    public User(String login, char[] password, String firstName) {
         this.setLogin(login);
         this.setPassword(password);
         this.setFirstName(firstName);
-        this.lastName = lastName;
-        this.registered = ZonedDateTime.now();
         this.lastLogin = null;
         this.loginFailureCount = 0;
         this.userQuestionList = new ArrayList<>(3);
@@ -79,6 +77,21 @@ public class User {
             throw new IllegalArgumentException("First name is required");
         }
         this.firstName = firstName;
+    }
+
+    public void setRegistered(ZonedDateTime r) {
+        this.registered = r; 
+
+    }
+
+    public void setLastLogin(ZonedDateTime l) {
+        this.lastLogin = l; 
+
+    }
+
+    public void setLoginFailureCount(int f) {
+        this.loginFailureCount = f;
+
     }
 
     // Methods for userQuestionList
