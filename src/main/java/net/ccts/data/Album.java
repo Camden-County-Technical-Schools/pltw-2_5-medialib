@@ -1,108 +1,78 @@
-/* Adds the class to the net.ccts.data package */
 package net.ccts.data;
 
+/* The album class is supposed to be used to find the name of a song, the artist, and the release date */
+public class Album extends Media {
 
-/* The Album class is used to track data relating to a specific album */
-public class Album {
-
-    private String name; 
+    private String name;
     private String artist; 
-    private int releaseYear; 
-    private int releaseMonth; 
+    private int releaseYear;
+    private int releaseMonth;
     private int releaseDay; 
 
-    /* Constructor */
-    public Album(String n, String a, int y, int m, int d) {
-        this.name = n;
-        this.artist = a;
-        this.releaseYear = y;
-        this.releaseMonth = m;
-        this.releaseDay = d;
+    public Album(String id, String title, String name, String artist, int releaseYear, int releaseMonth, int releaseDay) {
+        super(id, title);
+        this.name = name;
+        this.artist = artist;
+        this.releaseYear = releaseYear;
+        this.releaseMonth = releaseMonth;
+        this.releaseDay = releaseDay;
     }
 
-
-    /* Accessor Methods */
     public String getName() {
-        return name; 
+        return this.name;
     }
 
     public String getArtist() {
-        return artist; 
+        return this.artist;
     }
 
-    public int getYear() {
-        return releaseYear; 
+    public int getReleaseYear() {
+        return this.releaseYear;
     }
 
-    public int getMonth() {
-        return releaseMonth; 
-    }
-    
-    public int getDay() {
-        return releaseDay;
+    public int getReleaseMonth() {
+        return this.releaseMonth;
     }
 
-    /* Mutator Methods */
-    public void setName(String n) {
-        this.name = n;
+    public int getReleaseDay() {
+        return this.releaseDay;
     }
 
-    public void setArtist(String a) {
-        this.artist = a;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setReleaseYear(int y) {
-        if (!validateReleaseDate(y, releaseMonth, releaseDay)) {
-        throw new IllegalArgumentException("Invalid release date, release year must be between 1800 and 9999, received" + y);
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        if (releaseYear < 1800 || releaseYear > 9999) {
+            throw new IllegalArgumentException("Release year must be between 1800 and 9999, received " + releaseYear);
         }
-        this.releaseYear = y;
+        this.releaseYear = releaseYear;
     }
 
-    public void setReleaseMonth(int m) {
-        if (!validateReleaseDate(releaseYear, m, releaseDay)) {
-        throw new IllegalArgumentException("Invalid release date, release month must be between 1 and 12, received" + m);
+    public void setReleaseMonth(int releaseMonth) {
+        if (releaseMonth < 1 || releaseMonth > 12) {
+            throw new IllegalArgumentException("Release month must be between 1 and 12, received " + releaseMonth);
         }
-        this.releaseMonth = m;
+        this.releaseMonth = releaseMonth;
     }
 
-    public void setReleaseDay(int d) {
-        if (!validateReleaseDate(releaseYear, releaseMonth, d)) {
-        throw new IllegalArgumentException("Invalid release date, release day must be between 1 and 31, received" + d);
+    public void setReleaseDay(int releaseDay) {
+        if (releaseDay < 1 || releaseDay > 31) {
+            throw new IllegalArgumentException("Release day must be between 1 and 31, received " + releaseDay);
         }
-        this.releaseDay = d;
+        this.releaseDay = releaseDay;
     }
-    
-    /* toString Method */
+
     @Override
     public String toString() {
         String info = this.name;
         if (this.releaseYear > 0 && this.releaseMonth > 0 && this.releaseDay > 0) {
-        return this.name + "- Release:" + this.releaseYear + "-" + this.releaseMonth + "-" + releaseDay; 
+            info += " - Release: " + this.releaseYear + "-" + this.releaseMonth + "-" + this.releaseDay;
         }
         return info;
-        } 
-
-    
-    /* ValidateReleasedDate Method */
-    private boolean validateReleaseDate(int y, int m, int d) {
-        if (y == 0 || m == 0 || d == 0) 
-            return true;
-    
-        
-        if (y < 1800 || y > 9999) {
-            return false;
-        }
-        
-        if (m < 1 || m > 12) {
-            return false;
-        }
-
-        if (d < 1 || d > 31) {
-            return false;
-        }
-
-        return true; 
     }
 }
-
-

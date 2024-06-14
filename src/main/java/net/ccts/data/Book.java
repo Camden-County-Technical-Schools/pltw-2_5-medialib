@@ -5,49 +5,47 @@ package net.ccts.data;
  *
  * A Book class for the MediaLibrary program
  */
-public class Book
-{
-  private String title;
-  private String author;
-  private int rating;
-  
-  /*** Constructor ****/
-  public Book(String t, String a)
-  {
-    title = t;
-    author = a;
-    rating = 0;
-  }
-  
-   /*** Accessor methods ***/
-  public String getTitle() {
-    return title;
-  }
+public class Book extends Media {
 
-  public String getAuthor() {
-    return author;
-  }
-  
-  public int getRating() {
-    return rating;
-  }
-  
-  public String toString() 
-  {
-    String info = "\"" + title + "\", written by " + author;
-    if (rating != 0) 
-    { 
-      info += ", rating is " + rating;
+    private String title;
+    private String author;
+    private int rating;
+
+    /*** Constructor ***/
+    public Book(String t, String a, String id) {
+        super(id, t); // Call to superclass constructor (Media class)
+        this.title = t; // Initialize instance variable title
+        this.author = a; // Initialize instance variable author
+        this.rating = 0; // Initialize instance variable rating
     }
-    return info;
-  }
 
-  /*** Mutator methods ***/
-  public void setTitle(String t) {
-    title = t;
-  }
+    /*** Accessor methods ***/
+    public String getTitle() {
+        return title;
+    }
 
-  public void setAuthor(String a) {
-    author = a;
-  }
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public String toString() {
+        String info = "\"" + title + "\", written by " + author;
+        if (rating != 0) {
+            info += ", rating is " + rating;
+        }
+        return info;
+    }
+
+    /*** Mutator methods ***/
+    public void setTitle(String t) {
+        this.title = t;
+    }
+
+    public void setAuthor(String a) {
+        this.author = a;
+    }
 }
