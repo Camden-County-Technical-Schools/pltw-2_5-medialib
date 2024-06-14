@@ -1,35 +1,48 @@
 package net.ccts.data;
+import java.util.ArrayList;
 
 /**
  * Activity 2.5.7
  * 
  * A MediaLib class for the MediaLibrary program
- */
+ **/
 public class MediaLib {
   
-  private ArrayList<Book> books = new Book[10];
-  private ArrayList<Album> albums = new Album[50];
+  private ArrayList<Book> books = new ArrayList<>(10);
+  private ArrayList<Album> albums = new ArrayList<>(50);
 
+  public MediaLib(){
+    books = new ArrayList<>(10);
+    albums = new ArrayList<>(50);
+  }
   /** 
    * @param is the index that is used
    * @return returns the position of index in books
-  */
+  **/
   public Book fetchBook(int index){
-    if(index < 0 || index >= books.length){
+    if(index < 0 || index >= books.size()){
     throw new IllegalArgumentException("Index is out of bounds ");
     }
-    return books[index];
+    return books.get(index);
   }
 
   public Album fetchAlbum(int index){
-  if(index < 0 || index >= albums.length){
+  if(index < 0 || index >= albums.size()){
     throw new IllegalArgumentException("Index is out of bounds ");
     }
-  return albums[index];
+  return albums.get(index);
   }  
-  public media fetchMedia(int index){
-    ArrayList<media> += ArrayList<Album> +ArrayList<Book>;
-    return ArrayList<media>;
+  public ArrayList<Media> fetchAllMedia(){
+    ArrayList<Media> allMedia = new ArrayList<>();
+    for(Book b: books)  {
+      if(b != null)
+      allMedia.add(b);
+    }
+    for(Album a : albums){
+      if (a !=null)
+      allMedia.add(a);
+    }
+    return allMedia;
   }
    /** 
    * @param is the index that is used
@@ -37,32 +50,30 @@ public class MediaLib {
   */
   
   public void setBook(int index, Book b){
-    if(index < 0 || index >= books.length){
+    if(index < 0 || index > this.books.size()){
       throw new IllegalArgumentException("Index is out of bounds ");
     }
-    this.books[index] = b;
+    this.books.set(index, b);
   }
    /** 
    * @param is the index that is used
    * @return returns the position of index in books
   */ 
   public void setAlbum (int index, Album a){
-    if(index < 0 || index >= albums.length){
+    if(index < 0 || index >= albums.size()){
         throw new IllegalArgumentException("Index is out of bounds ");
     }
-    this.albums[index] = a; 
+    this.albums.set(index, a) ; 
   }
    /** 
    * @param is the index that is used
    * @return returns the position of index in albums
   */
   public Book removeBook(int index){
-  if(index < 0 || index >= books.length){
+  if(index < 0 || index >= books.size()){
         throw new IllegalArgumentException("Index is out of bounds ");
     }
-    Book tmp = this.books[index];
-    this.books[index] = null;
-    return tmp; 
+    return books.remove(index);
   }
    /** 
    * @param is the index that is used
@@ -70,12 +81,10 @@ public class MediaLib {
    * @tmp is used to temporaily hold the element in books at index
   */
   public Album removeAlbum(int index){
-    if(index < 0 || index >= albums.length){
+    if(index < 0 || index >= albums.size()){
         throw new IllegalArgumentException("Index is out of bounds ");
       }
-      Album tmp = this.albums[index];
-      this.albums[index] = null;
-      return tmp;
+     return albums.remove(index);
   }
  /** 
    * @param is the index that is used
@@ -87,6 +96,12 @@ public class MediaLib {
     String info = "";
     
     return info;
+  }
+  public void addBook(Book b){
+    books.add(b);
+  }
+  public void addAlbum(Album a){
+    albums.add(a);
   }
 
 

@@ -1,13 +1,16 @@
 package net.ccts.data;
 import java.util.ArrayList;
-public class User(){
+import java.time.ZonedDateTime;
+public class User{
     private String login;
     private char[] password;
     private String firstName;
-    private java.time.ZonedDateTime Regestered;
+    private String lastName;
+    private java.time.ZonedDateTime registered;
     private java.time.ZonedDateTime lastLogin;
-    private java.util.ArrayList<UserQuestion> UserQuestionList = new ArrayList <UserQuestion> (3);
-}
+    private java.util.ArrayList<UserQuestion> userQuestionList = new ArrayList <UserQuestion> (3);
+    private int loginFailureCount;
+
 public User(String l, String fN, char[] p){
     login = l;
     firstName = fN;
@@ -20,8 +23,32 @@ public String getLogin(){
 public String getFirstName(){
     return firstName;
 }
-public String getPassWord(){
+public char[] getPassword(){
     return password;
+}
+public String getLastName(){
+    return lastName;
+}
+public int getLoginFailureCount(){
+    return loginFailureCount;
+}
+public ZonedDateTime getRegistered (){
+    return registered;
+}
+public ZonedDateTime getLastLogin(){
+    return lastLogin;
+}
+public ArrayList<UserQuestion> getUserQuestionList(){
+    return userQuestionList;
+}
+public void setRegistered(ZonedDateTime r){
+registered = r;
+}
+public void setLastLogin(ZonedDateTime lL){
+    lastLogin = lL;
+}
+public void setLastName(String lN){
+    lastName = lN;
 }
 public void setLogin(String l){
     if(l == null||l.length() == 0){
@@ -42,3 +69,4 @@ public void setPassword(char[] p){
     password = p;
 }
 
+}

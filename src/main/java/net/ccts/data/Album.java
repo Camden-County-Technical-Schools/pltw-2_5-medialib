@@ -10,11 +10,10 @@ public class Album extends Media {
   private int releaseDay; 
 
   public Album(String n, String a, String id){
+    super(id, n);
     this.name = n;
     this.artist = a;
     this.id = id;
-    super.id;
-    super.n;
   }
 public String getName(){
   return this.name;

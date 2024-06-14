@@ -7,24 +7,21 @@ package net.ccts.data;
  */
 public class Book extends Media
 {
-  private String title;
   private String author;
   private int rating;
   
   /*** Constructor ****/
   public Book(String t, String a, String id)
   {
-    title = t;
+    super(id, t);
     author = a;
     id = id;
-    rating = 0;
-    super.id;
-    super.t;
+    rating = 0;    
   }
   
    /*** Accessor methods ***/
   public String getTitle() {
-    return title;
+    return super.getTitle();
   }
 
   public String getAuthor() {
