@@ -67,14 +67,4 @@ public class UsersResource extends ApiResource {
         return new JacksonRepresentation<>(dataList);
     }
 
-//    @Post
-//    public Representation createUser(Representation entity) {
-//        Representation result = null;
-//        // Parse the given representation and retrieve pairs of
-//        // "name=value" tokens.
-//        Form form = new Form(entity);
-//        String itemName = form.getFirstValue("name");
-//
-//        return result;
-//    }
 }

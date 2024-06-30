@@ -70,4 +70,12 @@ public class MediaLib
         allMedia.addAll(this.albums);
         return allMedia;
     }
+
+    public int getNumberAlbums() {
+        return this.albums.size();
+    }
+
+    public int getNumberBooks() {
+        return this.books.size();
+    }
 }
